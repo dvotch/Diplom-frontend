@@ -1,0 +1,16 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .active {
+    position: relative;
+  }
+  .active::before {
+    content: "";
+    border-bottom: 4px solid purple;
+    width: 72px;
+    position: absolute;
+    bottom: 0;
+  }
+}

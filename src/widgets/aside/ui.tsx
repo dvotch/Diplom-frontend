@@ -1,8 +1,10 @@
 import { Link } from "react-router-dom";
 import Avatart from "../../shared/assets/аватар.jpeg";
+import { useContext } from "react";
+import { ThemeContext } from "../../app/context";
 export const Aside = () => {
   return (
-    <aside className="px-6 py-8 border-[1px] border-purple-900 absolute left-8 text-sub-100 text-lg grid place-items-center mt-8 mb-4">
+    <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg grid place-items-center mb-4 ml-8 row-start-2">
       <img src={Avatart} className="mix-blend-multiply" />
       <h2 className="text-sub-100 text-2xl">Титов Игорь</h2>
       <span className="px-12 py-1 bg-purple-600  text-white font-bold rounded-xl mt-5">
@@ -16,7 +18,7 @@ export const Aside = () => {
       <ul className="mt-6 w-60">
         <li>
           <Link
-            to="/#"
+            to="/statement"
             className="border-[1px] border-purple-900 py-2 text-black grow grid place-items-center rounded-lg mt-4"
           >
             Журнал

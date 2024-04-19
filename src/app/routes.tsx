@@ -1,7 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import { RootLayot } from "./layout/Root";
-import { StatementPage } from "../pages/StatementPage";
-import { ProfilePage } from "../pages/ProfilePage";
+import { Statement } from "../widgets/statement/ui";
 
 export const route = createBrowserRouter([
   {
@@ -10,11 +9,7 @@ export const route = createBrowserRouter([
     children: [
       {
         path: "statement",
-        element: <StatementPage />,
-      },
-      {
-        path: "profile",
-        element: <ProfilePage />,
+        element: <Statement />,
       },
     ],
   },

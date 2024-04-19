@@ -3,7 +3,7 @@ import { Aside, Header } from "../../widgets";
 
 export const RootLayot = () => {
   return (
-    <div>
+    <div className="grid grid-cols-root grid-rows-root gap-y-6 gap-x-12">
       <Header />
       <Aside />
       <Outlet />
