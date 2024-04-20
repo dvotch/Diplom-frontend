@@ -5,7 +5,7 @@ export default {
     extend: {
       gridTemplateColumns: {
         root: "320px 1fr",
-        statement: "160px 1fr",
+        statement: "200px 1fr",
       },
       gridTemplateRows: {
         root: "135px 1fr",
