@@ -6,7 +6,7 @@ import { Button } from "../../shared/components";
 
 export const Header = () => {
   return (
-    <header className="px-6 pt-8 pb-2 border-b-2 border-gray-500">
+    <header className="px-6 pt-8 pb-2 border-b-2 border-gray-200 col-span-2">
       <div className="flex justify-between">
         <div className="flex ">
           <Link to="/">
@@ -25,8 +25,7 @@ export const Header = () => {
           <Button text="Выйти" />
         </div>
       </div>
-      <hr className="bg-hr mt-6" />
-      <nav className="mt-4">
+      <nav className="mt-4 ml-8">
         <Link
           to="/profile"
           className="fonst-sans text-base text-text-100 align-middle border-b-4 border-violet-900 pb-2"
