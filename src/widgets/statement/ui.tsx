@@ -1,4 +1,3 @@
-import { useQueryClient } from "@tanstack/react-query";
 import { Quarter } from "./config/quarters";
 import { useState } from "react";
 import { useLessons } from "./api/lessons";
@@ -9,7 +8,7 @@ export const Statement = () => {
   const [quater, setQuater] = useState(1);
   const [lesson, setLesson] = useState("");
   const { data: lessons, isLoading: isLoadingLessons } = useLessons(quater);
-  const { data: marks, isLoading: isLoadingMarks } = useMarks(lesson);
+  const { data: marks } = useMarks(lesson);
   const odd = quater % 2 === 1;
 
   const changeQuater = (e: React.MouseEvent<HTMLElement>) => {
@@ -37,7 +36,7 @@ export const Statement = () => {
         <LessonButton lessons={lessons} onClick={changeLesson} />
       )}
 
-      {lesson && marks && <Quarter odd marks={marks} />}
+      {lesson && marks && <Quarter odd={odd} marks={marks} />}
     </div>
   );
 };
