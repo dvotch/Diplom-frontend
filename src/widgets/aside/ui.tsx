@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Avatart from "../../shared/assets/аватар.jpeg";
-import { useContext } from "react";
-import { ThemeContext } from "../../app/context";
+
 export const Aside = () => {
   return (
     <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg grid place-items-center mb-4 ml-8 row-start-2">
