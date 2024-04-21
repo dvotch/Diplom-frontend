@@ -1,14 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { ILesson } from "../interfaces";
-import { token } from ".";
+import { STUDENT_TOKEN } from "../../../shared/const";
 
 export const fetchStudentLessons = async (quater: number) => {
   return await axios.get<ILesson[]>(
     "http://prodd.dvotch.ru:3001/api/student/lessons/" + quater,
     {
       headers: {
-        Authorization: token,
+        Authorization: STUDENT_TOKEN,
       },
     }
   );
