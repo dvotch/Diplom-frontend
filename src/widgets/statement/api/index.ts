@@ -1,3 +1,1 @@
 export * from "./lessons";
-export const token =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmOWQwNDk0LTc5YWMtNDdmMS1hMjIxLTE4N2ZlNDc3MDRmMSIsImVtYWlsIjoic3R1ZGVudCIsInJvbGVzIjpbIlNUVURFTlQiXSwib3JnYW5pemF0aW9uSWQiOm51bGwsImlhdCI6MTcxMzYyMzg2NCwiZXhwIjoxNzEzNjI3NDY0fQ.a7DI5ABnKbC7Unpo3m5qKON8UsNM14bbGJKDzxgQjHg";
