@@ -12,18 +12,22 @@ export const Statement = () => {
   const odd = quater % 2 === 1;
 
   const changeQuater = (e: React.MouseEvent<HTMLElement>) => {
-    const button = e.target as HTMLButtonElement;
-    document.querySelector("nav > .active")?.classList.remove("active");
-    button.classList.add("active");
-    setQuater(+button.value);
-    setLesson("");
+    if (e.target instanceof HTMLButtonElement) {
+      const button = e.target;
+      document.querySelector("nav > .active")?.classList.remove("active");
+      button.classList.add("active");
+      setQuater(+button.value);
+      setLesson("");
+    }
   };
 
   const changeLesson = (e: React.MouseEvent<HTMLElement>) => {
-    const button = e.target as HTMLButtonElement;
-    document.querySelector("div > .active")?.classList.remove("active");
-    button.classList.add("active");
-    setLesson(button.value);
+    if (e.target instanceof HTMLButtonElement) {
+      const button = e.target;
+      document.querySelector("div > .active")?.classList.remove("active");
+      button.classList.add("active");
+      setLesson(button.value);
+    }
   };
 
   return (
