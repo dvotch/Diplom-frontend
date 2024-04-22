@@ -1,19 +1,19 @@
 import { createContext, useState } from "react";
 
 export interface context {
-  role: string;
-  setRole: (role: string) => void;
+  role: string[];
+  setRole: (role: string[]) => void;
 }
-export const ThemeContext = createContext<context>({
-  role: "",
+export const RoleContext = createContext<context>({
+  role: [""],
   setRole: () => {},
 });
 
 export const Context = ({ children }: { children: React.ReactNode }) => {
-  const [role, setRole] = useState("");
+  const [role, setRole] = useState([""]);
   return (
-    <ThemeContext.Provider value={{ role, setRole }}>
+    <RoleContext.Provider value={{ role, setRole }}>
       {children}
-    </ThemeContext.Provider>
+    </RoleContext.Provider>
   );
 };

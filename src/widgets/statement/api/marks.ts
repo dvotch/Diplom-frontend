@@ -5,7 +5,7 @@ import { STUDENT_TOKEN } from "../../../shared/const";
 
 export const fetchStudentMarks = async (lessonId: string) => {
   return await axios.get<IMark[]>(
-    "http://prodd.dvotch.ru:3001/api/student/marks/" + lessonId,
+    "http://prod.dvotch.ru:3001/api/student/marks/" + lessonId,
     {
       headers: {
         Authorization: STUDENT_TOKEN,
