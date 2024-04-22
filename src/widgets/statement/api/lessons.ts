@@ -5,7 +5,7 @@ import { STUDENT_TOKEN } from "../../../shared/const";
 
 export const fetchStudentLessons = async (quater: number) => {
   return await axios.get<ILesson[]>(
-    "http://prodd.dvotch.ru:3001/api/student/lessons/" + quater,
+    "http://prod.dvotch.ru:3001/api/student/lessons/" + quater,
     {
       headers: {
         Authorization: STUDENT_TOKEN,
