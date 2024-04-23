@@ -43,11 +43,12 @@ const AuthForm = () => {
 
       .then((response) => {
         const token = response;
-        console.log(token);
+
+        localStorage.setItem("token", token.accessToken);
+
         if (token.accessToken) {
           const decoded = jwtDecode<JwtPayload>(token.accessToken);
           setRole(decoded.roles);
-          console.log(decoded.roles);
         }
       })
       .then(() => {

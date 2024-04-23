@@ -5,10 +5,16 @@ import { RoleContext } from "../context";
 
 export const RootLayot = () => {
   const navigate = useNavigate();
-  const { role } = useContext(RoleContext);
+  const { setRole } = useContext(RoleContext);
 
   useEffect(() => {
-    if (!role[0]) navigate("/Login");
+    const TokenUser = localStorage.getItem("token");
+
+    if (TokenUser) {
+      setRole([TokenUser]);
+      navigate("/statement");
+    }
+    if (!TokenUser) navigate("/Login");
   }, []);
   return (
     <div className="grid grid-cols-root grid-rows-root gap-y-6 gap-x-12">

@@ -4,6 +4,7 @@ export interface context {
   role: string[];
   setRole: (role: string[]) => void;
 }
+
 export const RoleContext = createContext<context>({
   role: [""],
   setRole: () => {},
