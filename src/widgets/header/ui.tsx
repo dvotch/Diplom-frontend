@@ -10,9 +10,15 @@ export const Header = () => {
     localStorage.removeItem("token");
     navigate("/Login");
   };
+  const handleRedirect = () => {
+    window.open(
+      "https://yandex.ru/maps/org/zelenodolskiy_mekhanicheskiy_kolledzh/1168389123/?ll=48.488733%2C55.851040&z=16.49",
+      "_blank"
+    );
+  };
   return (
     <header className="px-6 pt-8 pb-2 border-b-2 border-gray-200 col-span-2">
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <div className="flex ">
           <Link to="/">
             <img src={Logo} width={50} />
@@ -25,7 +31,9 @@ export const Header = () => {
           <Brightness3Icon sx={{ fontSize: 40 }} />
           <RoomIcon sx={{ fontSize: 40 }} className="ml-4" />
           <div className="fonst-sans text-sub-100 flex justify-center items-center">
-            <span className="">Зеленодольск</span>
+            <span onClick={handleRedirect} className="">
+              <button className="mr-4">Зеленодольск</button>
+            </span>
           </div>
           <Button onClick={handleLogout}>Выйти</Button>
         </div>
