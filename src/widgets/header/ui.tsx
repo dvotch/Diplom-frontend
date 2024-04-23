@@ -10,7 +10,7 @@ export const Header = () => {
       <div className="flex justify-between">
         <div className="flex ">
           <Link to="/">
-            <img src={Logo} className="" width={50} />
+            <img src={Logo} width={50} />
           </Link>
           <p className="fonst-sans text-base text-sub-100 ml-2">
             ЗМК <br /> Зеленодольский механический колледж
@@ -22,7 +22,7 @@ export const Header = () => {
           <div className="fonst-sans text-sub-100 flex justify-center items-center">
             <span className="">Зеленодольск</span>
           </div>
-          <Button text="Выйти" />
+          <Button>Выйти</Button>
         </div>
       </div>
       <nav className="mt-4 ml-8">

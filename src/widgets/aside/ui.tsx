@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
-import Avatart from "../../shared/assets/аватар.jpeg";
+import { useGetLogo } from "./api/logo";
 
 export const Aside = () => {
+  const { data, isLoading, isRefetching } = useGetLogo();
+
   return (
     <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg grid place-items-center mb-4 ml-8 row-start-2">
-      <img src={Avatart} className="mix-blend-multiply" />
+      {isLoading || isRefetching ? (
+        <div>Loading image...</div>
+      ) : (
+        <img src={data} id="img" className="mix-blend-multiply" width={150} />
+      )}
       <h2 className="text-sub-100 text-2xl">Титов Игорь</h2>
       <span className="px-12 py-1 bg-purple-600  text-white font-bold rounded-xl mt-5">
         Студент
