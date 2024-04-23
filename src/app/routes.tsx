@@ -12,7 +12,6 @@ import { Settings } from "../widgets";
 export const route = createBrowserRouter(
   createRoutesFromElements(
     <Route>
-      {" "}
       <Route element={<Login />} path="/Login" />
       <Route element={<RootLayot />} path="/">
         <Route element={<Statement />} index path="statement" />

@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useContext } from "react";
 import shecterin from "../../shared/assets/Прямоугольник 2.png";
 
-import { jwtDecode } from "Jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { RoleContext } from "../../app/context";
 
@@ -43,11 +43,9 @@ const AuthForm = () => {
 
       .then((response) => {
         const token = response;
-        console.log(token);
         if (token.accessToken) {
           const decoded = jwtDecode<JwtPayload>(token.accessToken);
           setRole(decoded.roles);
-          console.log(decoded.roles);
         }
       })
       .then(() => {
