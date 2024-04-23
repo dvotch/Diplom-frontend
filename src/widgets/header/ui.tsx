@@ -1,10 +1,15 @@
 import Logo from "../../shared/assets/zmk.png";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
 import RoomIcon from "@mui/icons-material/Room";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "../../shared/components";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/Login");
+  };
   return (
     <header className="px-6 pt-8 pb-2 border-b-2 border-gray-200 col-span-2">
       <div className="flex justify-between">
@@ -22,7 +27,7 @@ export const Header = () => {
           <div className="fonst-sans text-sub-100 flex justify-center items-center">
             <span className="">Зеленодольск</span>
           </div>
-          <Button>Выйти</Button>
+          <Button onClick={handleLogout}>Выйти</Button>
         </div>
       </div>
       <nav className="mt-4 ml-8">
