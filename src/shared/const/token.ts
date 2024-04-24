@@ -1,2 +1,3 @@
-export const STUDENT_TOKEN =
-  "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjJmOWQwNDk0LTc5YWMtNDdmMS1hMjIxLTE4N2ZlNDc3MDRmMSIsImVtYWlsIjoic3R1ZGVudCIsInJvbGVzIjpbIlNUVURFTlQiXSwib3JnYW5pemF0aW9uSWQiOm51bGwsImlhdCI6MTcxMzg2NTA5MSwiZXhwIjoxNzE0NDY5ODkxfQ.3ENXu81wgAQtMvWQnDIIOdvRUWigs_MAGm5I5_n8rOA";
+const TokenUser = localStorage.getItem("token");
+
+export const TOKEN = TokenUser;

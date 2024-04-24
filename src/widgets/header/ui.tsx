@@ -1,13 +1,24 @@
 import Logo from "../../shared/assets/zmk.png";
 import Brightness3Icon from "@mui/icons-material/Brightness3";
 import RoomIcon from "@mui/icons-material/Room";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Button } from "../../shared/components";
 
 export const Header = () => {
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    navigate("/Login");
+  };
+  const handleRedirect = () => {
+    window.open(
+      "https://yandex.ru/maps/org/zelenodolskiy_mekhanicheskiy_kolledzh/1168389123/?ll=48.488733%2C55.851040&z=16.49",
+      "_blank"
+    );
+  };
   return (
     <header className="px-6 pt-8 pb-2 border-b-2 border-gray-200 col-span-2">
-      <div className="flex justify-between">
+      <div className="flex justify-between ">
         <div className="flex ">
           <Link to="/">
             <img src={Logo} width={50} />
@@ -20,9 +31,11 @@ export const Header = () => {
           <Brightness3Icon sx={{ fontSize: 40 }} />
           <RoomIcon sx={{ fontSize: 40 }} className="ml-4" />
           <div className="fonst-sans text-sub-100 flex justify-center items-center">
-            <span className="">Зеленодольск</span>
+            <span onClick={handleRedirect} className="">
+              <button className="mr-4">Зеленодольск</button>
+            </span>
           </div>
-          <Button>Выйти</Button>
+          <Button onClick={handleLogout}>Выйти</Button>
         </div>
       </div>
       <nav className="mt-4 ml-8">
