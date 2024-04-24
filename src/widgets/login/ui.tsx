@@ -1,7 +1,7 @@
 import { useState, ChangeEvent, FormEvent, useContext } from "react";
 import shecterin from "../../shared/assets/Прямоугольник 2.png";
 
-import { jwtDecode } from "jwt-decode";
+import { jwtDecode } from "Jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { RoleContext } from "../../app/context";
 
