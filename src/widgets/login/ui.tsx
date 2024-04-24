@@ -1,9 +1,9 @@
-import { useState, ChangeEvent, FormEvent, useContext } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import shecterin from "../../shared/assets/Прямоугольник 2.png";
 
 import { jwtDecode } from "Jwt-decode";
 import { useNavigate } from "react-router-dom";
-import { RoleContext } from "../../app/context";
+import { JwtPayload, roles } from "../../shared/interfaces";
 
 const AuthForm = () => {
   const navigate = useNavigate();
@@ -11,13 +11,10 @@ const AuthForm = () => {
     email: "",
     password: "",
   });
-  const { role, setRole } = useContext(RoleContext);
 
-  const handleLogin = () => {
-    if (role[0] === "STUDENT") {
-      navigate("/student");
-    } else {
-      navigate("/");
+  const handleLogin = (roles: roles[]) => {
+    if (roles.includes("STUDENT") || roles.includes("TEACHER")) {
+      return navigate("/", { replace: true });
     }
   };
 
@@ -46,24 +43,15 @@ const AuthForm = () => {
         if (token.accessToken) {
           localStorage.setItem("token", token.accessToken);
           const decoded = jwtDecode<JwtPayload>(token.accessToken);
-          setRole(decoded.roles);
+          return handleLogin(decoded.roles);
         }
+        alert("Неверный логин или пароль");
       })
-      .then(() => {
-        handleLogin();
-      })
-
       .catch((error) => {
         console.error(error);
       });
   };
 
-  interface JwtPayload {
-    id: string;
-    email: string;
-    roles: string[];
-    organizationId: string;
-  }
   return (
     <div className="flex items-center justify-center  h-screen">
       <div className="">

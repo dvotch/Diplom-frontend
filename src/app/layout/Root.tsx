@@ -10,11 +10,8 @@ export const RootLayot = () => {
   useEffect(() => {
     const TokenUser = localStorage.getItem("token");
 
-    if (TokenUser) {
-      setRole([TokenUser]);
-      navigate("/statement");
-    }
-    if (!TokenUser) navigate("/Login");
+    if (!TokenUser) return navigate("/Login");
+    setRole([TokenUser]);
   }, []);
   return (
     <div className="grid grid-cols-root grid-rows-root gap-y-6 gap-x-12">

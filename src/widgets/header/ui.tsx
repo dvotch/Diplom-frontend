@@ -8,6 +8,7 @@ import { QueryCache } from "@tanstack/react-query";
 export const Header = () => {
   const navigate = useNavigate();
   const cache = new QueryCache();
+
   const handleLogout = () => {
     localStorage.removeItem("token");
     navigate("/Login");
