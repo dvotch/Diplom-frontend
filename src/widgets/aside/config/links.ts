@@ -1,12 +1,16 @@
+export const LinksGeneral: LinkData[] = [
+  {
+    path: "/portfolio",
+    text: "Моё портфолио",
+  },
+];
+
 export const LinksStudent: LinkData[] = [
   {
     path: "/student/statement",
     text: "Журнал",
   },
-  {
-    path: "/student/portfolio",
-    text: "Моё портфолио",
-  },
+  ...LinksGeneral,
   {
     path: "/student/organizations",
     text: "Членство",
@@ -19,6 +23,7 @@ export const LinksStudent: LinkData[] = [
     path: "/student/feature",
     text: "Возможности",
   },
+  ...LinksGeneral,
 ];
 
 export const LinksTeacher: LinkData[] = [
@@ -26,10 +31,7 @@ export const LinksTeacher: LinkData[] = [
     path: "/teacher/statement",
     text: "Журнал",
   },
-  {
-    path: "/teacher/portfolio",
-    text: "Моё портфолио",
-  },
+  ...LinksGeneral,
   {
     path: "/teacher/credit",
     text: "Задолженности",

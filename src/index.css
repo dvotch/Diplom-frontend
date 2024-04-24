@@ -13,4 +13,85 @@
     position: absolute;
     bottom: 0;
   }
+
+  select {
+    outline: none;
+    appearance: none;
+    background-color: transparent;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+  }
+
+  .select {
+    grid-template-areas: "select";
+    appearance: none;
+    @apply border-gray-200 border-2 rounded-lg h-12 cursor-pointer grid w-[600px] items-center relative;
+  }
+
+  select {
+    grid-area: select;
+    height: 100%;
+  }
+
+  .select::after,
+  .select::before {
+    content: "";
+    height: 16px;
+    border: 1.5px solid purple;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    rotate: 45deg;
+  }
+
+  .select::before {
+    rotate: 135deg;
+    right: 40px;
+  }
+
+  select::-ms-expand {
+    display: none;
+  }
+  select:invalid {
+    color: gray;
+  }
+
+  .input-file {
+    position: relative;
+    display: inline-block;
+  }
+  .input-file span {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    outline: none;
+    text-decoration: none;
+    font-size: 14px;
+    vertical-align: middle;
+    color: rgb(255 255 255);
+    text-align: center;
+    border-radius: 4px;
+    background-color: #419152;
+    line-height: 22px;
+    height: 40px;
+    padding: 10px 20px;
+    box-sizing: border-box;
+    border: none;
+    margin: 0;
+    transition: background-color 0.2s;
+  }
+  .input-file input[type="file"] {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    display: block;
+    width: 0;
+    height: 0;
+  }
 }
