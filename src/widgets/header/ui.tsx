@@ -22,12 +22,12 @@ export const Header = () => {
           <div className="fonst-sans text-sub-100 flex justify-center items-center">
             <span className="">Зеленодольск</span>
           </div>
-          <Button>Выйти</Button>
+          <Button className="ml-4">Выйти</Button>
         </div>
       </div>
       <nav className="mt-4 ml-8">
         <Link
-          to="/profile"
+          to="/"
           className="fonst-sans text-base text-text-100 align-middle border-b-4 border-violet-900 pb-2"
         >
           Мой профиль
