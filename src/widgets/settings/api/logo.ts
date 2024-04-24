@@ -1,6 +1,6 @@
 import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { STUDENT_TOKEN } from "../../../shared/const";
+import { TOKEN } from "../../../shared/const";
 
 export const uploadLogo = (file: Blob) => {
   const formData = new FormData();
@@ -8,7 +8,7 @@ export const uploadLogo = (file: Blob) => {
   return axios.post("http://prod.dvotch.ru:3001/api/user/logo", formData, {
     headers: {
       "Content-Type": `multipart/form-data`,
-      Authorization: STUDENT_TOKEN,
+      Authorization: TOKEN(),
     },
   });
 };

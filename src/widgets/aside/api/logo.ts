@@ -1,11 +1,12 @@
 import axios from "axios";
-import { STUDENT_TOKEN } from "../../../shared/const";
+
 import { useQuery } from "@tanstack/react-query";
+import { TOKEN } from "../../../shared/const";
 
 export const getLogo = async () => {
   return await axios.get<string>("http://prod.dvotch.ru:3001/api/user/logo", {
     headers: {
-      Authorization: STUDENT_TOKEN,
+      Authorization: TOKEN(),
     },
   });
 };
