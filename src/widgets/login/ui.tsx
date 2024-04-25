@@ -60,12 +60,6 @@ const AuthForm = () => {
       });
   };
 
-  interface JwtPayload {
-    id: string;
-    email: string;
-    roles: string[];
-    organizationId: string;
-  }
   return (
     <div className="flex items-center justify-center  h-screen">
       <div className="">
