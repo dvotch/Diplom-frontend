@@ -43,10 +43,8 @@ const AuthForm = () => {
 
       .then((response) => {
         const token = response;
-
-        localStorage.setItem("token", token.accessToken);
-
         if (token.accessToken) {
+          localStorage.setItem("token", token.accessToken);
           const decoded = jwtDecode<JwtPayload>(token.accessToken);
           setRole(decoded.roles);
         }
