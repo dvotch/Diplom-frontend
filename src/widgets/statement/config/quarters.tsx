@@ -23,7 +23,7 @@ export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {
   console.log(editMarks);
 
   return (
-    <table className="table-fixed border-2 border-black row-start-3 h-1/2">
+    <table className="table-fixed border-2 border-black row-start-3 h-1/2 dark:border-white">
       <thead>
         <tr>
           <th className="w-20"></th>
