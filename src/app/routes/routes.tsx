@@ -13,6 +13,7 @@ import { StudentGuardRoute } from "./StudentGuardRoute";
 import { Forbidden } from "../../pages/403/Forbidden";
 import { PortfolioPage } from "../../pages/portfolio/ui";
 import { Credit } from "../../widgets/teacher/credit/ui";
+import { TeacherGuardRoute } from "./StudentGuardRoute copy";
 
 export const route = createBrowserRouter(
   createRoutesFromElements(
@@ -23,9 +24,11 @@ export const route = createBrowserRouter(
         <Route element={<StudentGuardRoute />}>
           <Route element={<Statement />} path="student/statement" />
         </Route>
+        <Route element={<TeacherGuardRoute />}>
+          <Route element={<Credit />} path="teacher/credit" />
+        </Route>
         <Route element={<Settings />} path="settings" />
         <Route element={<PortfolioPage />} path="portfolio" />
-        <Route element={<Credit />} path="credit" />
       </Route>
       <Route element={<Forbidden />} path="forbidden" />
       <Route element={<NotFound />} path="*" />

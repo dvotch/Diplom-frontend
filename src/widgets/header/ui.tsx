@@ -95,7 +95,7 @@ export const Header = () => {
         </div>
         <nav className="mt-4 ml-8">
           <Link
-            to="/profile"
+            to="/"
             className="fonst-sans text-base text-text-100 align-middle hover:opacity-50   pb-2 dark:text-white "
           >
             Мой профиль
