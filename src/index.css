@@ -9,7 +9,14 @@
   .active::before {
     content: "";
     border-bottom: 4px solid purple;
-    width: 72px;
+    width: 90%;
+    position: absolute;
+    bottom: 0;
+  }
+  .dark .active::before {
+    content: "";
+    border-bottom: 4px solid #e11d48;
+    width: 90%;
     position: absolute;
     bottom: 0;
   }

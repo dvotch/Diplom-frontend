@@ -31,8 +31,8 @@ export const Statement = () => {
   };
 
   return (
-    <div className=" grid grid-cols-statement grid-rows-statement pr-5">
-      <h1 className=" text-5xl">Журнал</h1>
+    <div className=" grid grid-cols-statement grid-rows-statement pr-5 dark:text-white">
+      <h1 className=" text-5xl dark:text-white ">Журнал</h1>
       <QuaterButtons onClick={changeQuater} />
       {isLoadingLessons ? (
         <div>Loading</div>
