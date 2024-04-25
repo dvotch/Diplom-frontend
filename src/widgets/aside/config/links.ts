@@ -23,7 +23,6 @@ export const LinksStudent: LinkData[] = [
     path: "/student/feature",
     text: "Возможности",
   },
-  ...LinksGeneral,
 ];
 
 export const LinksTeacher: LinkData[] = [
