@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import { Aside, Header } from "../../widgets";
 import { useContext, useEffect } from "react";
 import { RoleContext } from "../context";
+import { Footer } from "../../widgets/footer/ui";
 
 export const RootLayot = () => {
   const navigate = useNavigate();
@@ -20,6 +21,7 @@ export const RootLayot = () => {
         <Aside />
         <Outlet />
       </div>
+      <Footer />
     </div>
   );
 };
