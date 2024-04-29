@@ -18,3 +18,13 @@ export interface ILesson {
   dateStart: Date;
   dateEnd: Date;
 }
+export interface IUser {
+  id: string;
+  name: string;
+  surname: string;
+}
+export interface IUserGroup {
+  id: string;
+  name: string;
+  surname: string;
+}

@@ -3,61 +3,89 @@ import { useCredit } from "./api";
 import AddRecordModal from "./window/addNote";
 import { formatDateTime } from "./api/dateConvertString";
 import { useLessons } from "./api/lessons";
+import React from "react";
+import { useUserName } from "./api/userName";
 
 export const Credit = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { data: users } = useUserName();
   const { data: credits, isLoading } = useCredit();
   const { data: lessons } = useLessons();
+  const lessonsById =
+    lessons &&
+    lessons.reduce((acc, lesson) => {
+      acc[lesson.id] = lesson;
+      return acc;
+    }, {});
+
+  const usersById =
+    users &&
+    users.reduce((acc, user) => {
+      acc[user.id] = user;
+      return acc;
+    }, {});
   return (
-    <table className="">
-      <thead className="">
-        <tr className="border-b-2 border-indigo-500 ">
-          <th className="">Предмет </th>
-          <th className=" ">Студент</th>
-          <th className=" ">Дата</th>
-          <th className="">Кабинет</th>
-          <th className="">Курс</th>
-          <th className="">Крайний срок</th>
-        </tr>
-      </thead>
-
-      <tbody>
-        {isLoading ? (
-          <tr>
-            <td>Loading...</td>
+    <div className="">
+      <table className=" ">
+        <thead className="">
+          <tr className="border-b-2 border-Neutral-900  dark:text-white">
+            <th className="w-60">Предмет </th>
+            <th className="w-60">Студент</th>
+            <th className="w-60 ">Дата</th>
+            <th className="w-60">Кабинет</th>
+            <th className="w-60">Группа</th>
+            <th className="w-60">Крайний срок</th>
           </tr>
-        ) : (
-          credits &&
-          credits.map((credit, index) => (
-            <tr className="border-b-2 border-indigo-500 ">
-              {lessons && (
-                <td className="text-center">{lessons[index].name}</td>
-              )}
+        </thead>
 
-              <td className="text-center">{credit.userId}</td>
-              <td className="text-center">
-                {formatDateTime(credit.date.toString())}
-              </td>
-              <td className="text-center">{credit.office}</td>
-              {lessons && (
-                <td className="text-center">{lessons[index].group}</td>
-              )}
-              <td className="text-center text-red-700">
-                {formatDateTime(credit.deadLine.toString())}
-              </td>
+        <tbody className="dark:text-white">
+          {isLoading ? (
+            <tr>
+              <td>Loading...</td>
             </tr>
-          ))
-        )}
-      </tbody>
+          ) : (
+            credits &&
+            credits.map((credit, index) => (
+              <tr key={index} className="border-b-2 border-Neutral-900 ">
+                {lessonsById && lessonsById[credit.lessonId] && (
+                  <td className="text-center">
+                    {lessonsById[credit.lessonId].name}
+                  </td>
+                )}
 
-      <div className="flex">
-        <button className="mr-4" onClick={() => setIsOpen(true)}>
+                {usersById && usersById[credit.userId] && (
+                  <td className="text-center ">
+                    {usersById[credit.userId].name +
+                      " " +
+                      usersById[credit.userId].surname}
+                  </td>
+                )}
+                <td className="text-center">
+                  {formatDateTime(credit.date.toString())}
+                </td>
+                <td className="text-center">{credit.office}</td>
+                {lessonsById && lessonsById[credit.lessonId] && (
+                  <td className="text-center">
+                    {lessonsById[credit.lessonId].group}
+                  </td>
+                )}
+                <td className="text-center text-red-700">
+                  {formatDateTime(credit.deadLine.toString())}
+                </td>
+              </tr>
+            ))
+          )}
+        </tbody>
+      </table>
+      <div className="flex flex justify-center hover:opacity-50 opacity-60">
+        <button
+          className="mr-4 dark:text-white hover:opacity-50 "
+          onClick={() => setIsOpen(true)}
+        >
           Добавить запись
         </button>
         <AddRecordModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
-        <button className="">Удалить запись</button>
       </div>
-    </table>
+    </div>
   );
 };
