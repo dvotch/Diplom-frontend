@@ -52,10 +52,10 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
         credits &&
         credits.map((credit, index) => (
           <form
-            className="fixed inset-0 flex items-center justify-center bg-gray-900 bg-opacity-30"
+            className="fixed inset-0 flex items-center justify-center  bg-opacity-30 "
             onSubmit={handleSubmit}
           >
-            <div className="flex-row bg-white p-4  shadow-lg w-3/12 h-9/12 rounded-lg">
+            <div className="flex-row  bg-white p-4  shadow-lg w-2/12 h-10/12 rounded-lg ">
               <div className="flex justify-center">
                 <h1 className="font-bold content-center text-gray-500 opacity-50 ">
                   Добавить запись
@@ -70,7 +70,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                 </button>
               </div>
 
-              <div className="flex-row items-center justify-center">
+              <div>
                 <div>
                   <div className="flex-col font-regular text-indigo-950">
                     Выберите предмет
@@ -84,9 +84,9 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                     <option value="" disabled selected>
                       Название
                     </option>
-                    {credits &&
-                      credits.map((credits) => (
-                        <option>{credits.lessonId}</option>
+                    {lessons &&
+                      lessons.map((lessons) => (
+                        <option value={credit.lessonId}>{lessons.name}</option>
                       ))}
                   </select>
                 </div>
@@ -100,12 +100,14 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                     value={selectedUserId}
                     onChange={(e) => setSelectedUserId(e.target.value)}
                   >
-                    <option value="" disabled selected>
+                    <option value=" " disabled selected>
                       ФИО
                     </option>
-                    {credits &&
-                      credits.map((credits) => (
-                        <option>{credits.userId}</option>
+                    {usersGroup &&
+                      usersGroup.map((usersGroup) => (
+                        <option value={credit.userId}>
+                          {usersGroup.name + " " + usersGroup.surname}
+                        </option>
                       ))}
                   </select>
                 </div>
@@ -115,6 +117,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                   </div>
                   <input
                     placeholder="Время"
+                    type="datetime-local"
                     className="flex-col font-regular text-indigo-950 border-solid mt-2 border-2  font-regular rounded-lg border-black w-56"
                     value={selectedDateStart}
                     onChange={(e) => setSelectedDateStart(e.target.value)}
@@ -140,6 +143,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                     placeholder="Время"
                     className="flex-col font-regular text-indigo-950 border-solid mt-2 border-2  font-regular rounded-lg border-black w-56"
                     value={selectedDateEnd}
+                    type="datetime-local"
                     onChange={(e) => setSelectedDateEnd(e.target.value)}
                   ></input>
                 </div>

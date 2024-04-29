@@ -77,7 +77,7 @@ export const Credit = () => {
           )}
         </tbody>
       </table>
-      <div className="flex flex justify-center hover:opacity-50 opacity-60">
+      <div className="flex flex justify-center ">
         <button
           className="mr-4 dark:text-white hover:opacity-50 "
           onClick={() => setIsOpen(true)}
