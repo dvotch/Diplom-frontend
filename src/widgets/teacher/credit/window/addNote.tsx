@@ -52,7 +52,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
         credits &&
         credits.map((credit, index) => (
           <form
-            className="fixed inset-0 flex items-center justify-center  bg-opacity-30 "
+            className="fixed inset-0 flex items-center justify-center h-screen bg-gray-500 bg-opacity-10 "
             onSubmit={handleSubmit}
           >
             <div className="flex-row  bg-white p-4  shadow-lg w-2/12 h-10/12 rounded-lg ">

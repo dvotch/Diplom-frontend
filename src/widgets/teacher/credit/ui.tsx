@@ -26,6 +26,7 @@ export const Credit = () => {
     }, {});
   return (
     <div className="">
+      <h1 className="text-4xl dark:text-white mb-4">Задолжности</h1>
       <div className="flex-col flex justify-center">
         <table className=" ">
           <thead className="">
@@ -80,7 +81,7 @@ export const Credit = () => {
         </table>
         <div className="flex flex justify-center ">
           <button
-            className="mr-4 mt-2 dark:text-white hover:opacity-50 opacity-70 font-bold "
+            className="mr-4 mt-2 dark:text-white hover:opacity-50  opacity-70 font-bold "
             onClick={() => setIsOpen(true)}
           >
             Добавить запись
