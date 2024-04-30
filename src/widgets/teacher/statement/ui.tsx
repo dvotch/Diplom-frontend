@@ -3,7 +3,6 @@ import { useState } from "react";
 import { useLessons } from "./api/lessons";
 import { useMarks } from "./api/marks";
 import { LessonButton, QuaterButtons } from "./components";
-import { decodeJwt } from "../../shared/helpers/decodeJwt";
 
 export const Statement = () => {
   const [quater, setQuater] = useState(1);
@@ -11,7 +10,6 @@ export const Statement = () => {
   const { data: lessons, isLoading: isLoadingLessons } = useLessons(quater);
   const { data: marks } = useMarks(lesson);
   const odd = quater % 2 === 1;
-  const role = decodeJwt().roles;
 
   const changeQuater = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof HTMLButtonElement) {

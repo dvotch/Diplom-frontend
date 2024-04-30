@@ -36,7 +36,7 @@ export const Header = () => {
     setTheme(theme === "dark" ? "light" : "dark");
   };
   return (
-    <div className="  border-b-2 border-gray-200 col-span-2">
+    <div className="  border-b-2 border-gray-200 col-span-3">
       <header className="px-6 pt-8 pb-2 border-b-2 border-gray-200  col-span-2 dark:bg-slate-900">
         <div className="flex justify-between ">
           <div className="flex ">

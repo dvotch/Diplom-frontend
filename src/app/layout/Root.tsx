@@ -15,13 +15,13 @@ export const RootLayot = () => {
     setRole([TokenUser]);
   }, []);
   return (
-    <div className="">
+    <div className="h-screen">
       <div className="grid grid-cols-root grid-rows-root gap-y-6 gap-x-12 dark:bg-slate-900">
         <Header />
         <Aside />
         <Outlet />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 };

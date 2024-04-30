@@ -1,6 +1,6 @@
 export const Footer = () => {
   return (
-    <footer className="text-white py-8 bg-gradient-to-b from-white to-purple-200 h-40 opacity-100 dark:opacity-100 dark:bg-gradient-to-b dark:from-slate-900 dark:to-gray-600">
+    <footer className="text-white py-8 bg-gradient-to-b from-white to-purple-200 h-40 opacity-100 dark:opacity-100 dark:bg-gradient-to-b dark:from-slate-900 dark:to-gray-600 row-start-3 col-span-3">
       <div className="container mx-auto flex flex-row md:flex-row items-center justify-center">
         <div>
           <h3 className="text-lg font-bold  fonst-sans text-black opacity-50 dark:text-white">

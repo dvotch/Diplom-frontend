@@ -9,7 +9,7 @@ export default {
         statement: "200px 1fr",
       },
       gridTemplateRows: {
-        root: "135px 1fr",
+        root: "135px 1fr 160px",
         statement: "50px 60px 1fr",
       },
       colors: { sub: { 100: "#8392A5" } },
