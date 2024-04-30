@@ -1,7 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { IMark } from "../interfaces";
-import { TOKEN } from "../../../shared/const";
+import { TOKEN } from "../../../../shared/const";
+import { IMark } from "../../../statement/interfaces";
 
 export const fetchStudentMarks = async (lessonId: string) => {
   return await axios.get<IMark[]>(

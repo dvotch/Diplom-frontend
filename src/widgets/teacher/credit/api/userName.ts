@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ICredit, IUser } from "../interfaces";
+import { IUser } from "../interfaces";
 import { useQuery } from "@tanstack/react-query";
 
 export const fetchUserName = async () => {

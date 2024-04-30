@@ -1,4 +1,4 @@
-import { IMark } from "../interfaces";
+import { IMark } from "../../../statement/interfaces";
 import { evenMonths, oddMonths } from "./months";
 
 export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {

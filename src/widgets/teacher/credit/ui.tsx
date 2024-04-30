@@ -3,27 +3,27 @@ import { useCredit } from "./api";
 import AddRecordModal from "./window/addNote";
 import { formatDateTime } from "./api/dateConvertString";
 import { useLessons } from "./api/lessons";
-import React from "react";
 import { useUserName } from "./api/userName";
+import { ILesson, IUser } from "./interfaces";
 
 export const Credit = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { data: users } = useUserName();
   const { data: credits, isLoading } = useCredit();
   const { data: lessons } = useLessons();
-  const lessonsById =
-    lessons &&
-    lessons.reduce((acc, lesson) => {
-      acc[lesson.id] = lesson;
-      return acc;
-    }, {});
+  const lessonsById: { [key: string]: ILesson } | undefined = lessons?.reduce(
+    (acc, lesson) => {
+      return { ...acc, [lesson.id]: lesson };
+    },
+    {}
+  );
 
-  const usersById =
-    users &&
-    users.reduce((acc, user) => {
-      acc[user.id] = user;
-      return acc;
-    }, {});
+  const usersById: { [key: string]: IUser } | undefined = users?.reduce(
+    (acc, user) => {
+      return { ...acc, [user.id]: user };
+    },
+    {}
+  );
   return (
     <div className="">
       <h1 className="text-4xl dark:text-white mb-4">Задолжности</h1>

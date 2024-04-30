@@ -1,5 +1,5 @@
 import { useCredit } from "../api/credits";
-import { AddRecordModalProps, ICredit } from "../interfaces";
+import { AddRecordModalProps } from "../interfaces";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { useLessons } from "../api/lessons";
@@ -40,7 +40,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
           },
         });
       };
-      const response = await PostUserName();
+      PostUserName();
     } catch (error) {
       console.error("Ошибка при выполнении запроса:", error);
     }
@@ -50,7 +50,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     <>
       {isOpen &&
         credits &&
-        credits.map((credit, index) => (
+        credits.map((credit) => (
           <form
             className="fixed inset-0 flex items-center justify-center h-screen bg-gray-500 bg-opacity-10 "
             onSubmit={handleSubmit}

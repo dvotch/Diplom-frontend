@@ -3,7 +3,6 @@ import { years } from "./config/years";
 import { useEffect, useState } from "react";
 import { useGetCategories } from "./api/categories";
 import { useUploadPortfolio } from "./api/postPortfolio";
-import { useQueryClient } from "@tanstack/react-query";
 import { decodeJwt } from "../../shared/helpers/decodeJwt";
 
 export type Inputs = {
@@ -18,14 +17,13 @@ export const AchievementForm = () => {
 
   const [fileName, setFileName] = useState("");
   const { data: categories } = useGetCategories();
-  const queryClient = useQueryClient();
-  const { mutate: postPortfolio } = useUploadPortfolio(queryClient);
+  const { mutate: postPortfolio } = useUploadPortfolio();
 
   useEffect(() => {
     const inputFileText = document.querySelector(
       "input[type=file]"
     ) as HTMLInputElement;
-    inputFileText.addEventListener("change", (e: Event) => {
+    inputFileText.addEventListener("change", () => {
       if (inputFileText.files && inputFileText.files[0])
         setFileName(inputFileText.files[0].name);
     });

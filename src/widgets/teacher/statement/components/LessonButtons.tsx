@@ -1,5 +1,5 @@
 import { memo } from "react";
-import { ILesson } from "../interfaces";
+import { ILesson } from "../../../statement/interfaces";
 
 export const LessonButton = memo(({ onClick, lessons }: props) => {
   return (
