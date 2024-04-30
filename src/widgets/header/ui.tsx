@@ -53,13 +53,16 @@ export const Header = () => {
           </div>
           <div className="flex">
             {theme === "light" ? (
-              <button className="w-10 h-10" onClick={handleThemeSwitch}>
-                <Brightness3Icon sx={{ fontSize: 40 }} className="visible  " />
+              <button className="w-10 h-10 mt-2 " onClick={handleThemeSwitch}>
+                <Brightness3Icon
+                  sx={{ fontSize: 40 }}
+                  className="visible hover:opacity-50 "
+                />
               </button>
             ) : (
-              <button className="w-10 h-10 " onClick={handleThemeSwitch}>
+              <button className="w-10 h-10 mt-2 " onClick={handleThemeSwitch}>
                 <svg
-                  className="w-8 h-8 text-orange-600   dark:text-white"
+                  className="w-8 h-8 text-orange-600  hover:opacity-50  dark:text-white"
                   viewBox="0 0 24 24"
                   fill="none"
                   stroke="currentColor"

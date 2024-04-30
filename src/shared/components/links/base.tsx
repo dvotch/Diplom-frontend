@@ -11,7 +11,7 @@ export const BaseLink = ({ children, to, className }: props) => {
     <Link
       to={to}
       className={clsx(
-        "border-[1px] border-purple-900 py-2  grow grid place-items-center rounded-lg mt-4",
+        "border-[1px] border-purple-900 py-2 dark:border-rose-600 dark:text-white  grow grid place-items-center rounded-lg mt-4 hover:opacity-50",
         className
       )}
     >
