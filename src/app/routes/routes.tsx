@@ -26,6 +26,7 @@ export const route = createBrowserRouter(
         </Route>
         <Route element={<TeacherGuardRoute />}>
           <Route element={<Credit />} path="teacher/credit" />
+          <Route element={<Statement />} path="teacher/statement" />
         </Route>
         <Route element={<Settings />} path="settings" />
         <Route element={<PortfolioPage />} path="portfolio" />
