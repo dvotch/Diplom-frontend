@@ -1,3 +1,6 @@
+
+import React from "react";
+
 export const Footer = () => {
   return (
     <footer className="text-white py-8 bg-gradient-to-b from-white to-purple-200 h-40 opacity-100 dark:opacity-100 dark:bg-gradient-to-b dark:from-slate-900 dark:to-gray-600">
