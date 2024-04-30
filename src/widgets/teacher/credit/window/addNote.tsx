@@ -52,7 +52,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
         credits &&
         credits.map((credit, index) => (
           <form
-            className="fixed inset-0 flex items-center justify-center  bg-opacity-30 "
+            className="fixed inset-0 flex items-center justify-center h-screen bg-gray-500 bg-opacity-10 "
             onSubmit={handleSubmit}
           >
             <div className="flex-row  bg-white p-4  shadow-lg w-2/12 h-10/12 rounded-lg ">
@@ -151,13 +151,13 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
 
               <div className="flex justify-between">
                 <button
-                  className="bg-purple-800 text-lg text-white font-bold rounded-lg mt-4 ml-4 w-24 dark:bg-purple-900"
+                  className="bg-purple-800 text-lg text-white font-bold rounded-lg mt-4 ml-4 w-24 dark:bg-purple-900 hover:opacity-50"
                   type="submit"
                 >
                   Добавить
                 </button>
                 <button
-                  className="border-[1px] border-purple-800 text-purple-800 rounded-xl   font-bold mt-4 mr-4 w-24"
+                  className="border-[1px] border-purple-800 text-purple-800 rounded-xl hover:opacity-50  font-bold mt-4 mr-4 w-24"
                   onClick={() => {
                     onClose();
                   }}
