@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 import { useGetCategories } from "./api/categories";
 import { useUploadPortfolio } from "./api/postPortfolio";
 import { useQueryClient } from "@tanstack/react-query";
-import { decodeJwt } from "../../shared/helpers/decodeJwt";
+import { decodeJwt } from "../../../shared/helpers/decodeJwt";
+import { Button } from "../../../shared/components";
 
 export type Inputs = {
   name: string;
@@ -98,7 +99,7 @@ export const AchievementForm = () => {
           <span className="input-file-btn">Выберите файл</span>
         </div>
       </label>
-      <button type="submit">submit</button>
+      <Button className="w-fit">Добавить в портфолио</Button>
     </form>
   );
 };

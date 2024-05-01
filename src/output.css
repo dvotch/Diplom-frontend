@@ -821,6 +821,10 @@ select:invalid {
   height: 2.5rem;
 }
 
+.h-40 {
+  height: 10rem;
+}
+
 .h-8 {
   height: 2rem;
 }
@@ -831,6 +835,10 @@ select:invalid {
 
 .w-10 {
   width: 2.5rem;
+}
+
+.w-10\/12 {
+  width: 83.333333%;
 }
 
 .w-20 {
@@ -885,6 +893,19 @@ select:invalid {
   width: 98%;
 }
 
+.w-32 {
+  width: 8rem;
+}
+
+.w-52 {
+  width: 13rem;
+}
+
+.w-fit {
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
@@ -895,6 +916,10 @@ select:invalid {
 
 .table-fixed {
   table-layout: fixed;
+}
+
+.grid-cols-achievementList {
+  grid-template-columns: 160px 240px 1fr 160px;
 }
 
 .grid-cols-root {
@@ -1183,6 +1208,16 @@ select:invalid {
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
+}
+
+.text-gray-400 {
+  --tw-text-opacity: 1;
+  color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
 .text-gray-500 {

@@ -7,6 +7,7 @@ export default {
       gridTemplateColumns: {
         root: "320px 1fr",
         statement: "200px 1fr",
+        achievementList: "160px 240px 1fr 160px",
       },
       gridTemplateRows: {
         root: "135px 1fr",

@@ -1,5 +1,5 @@
 import { Hr } from "../../shared/components";
-import { AchievementForm } from "../../widgets";
+import { AchievementForm, AchievementList } from "../../widgets/achievement";
 
 export const PortfolioPage = () => {
   return (
@@ -8,6 +8,7 @@ export const PortfolioPage = () => {
       <Hr />
       <h3 className="text-xl mt-4">Загрузить достижения</h3>
       <AchievementForm />
+      <AchievementList />
     </div>
   );
 };

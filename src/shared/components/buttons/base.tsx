@@ -4,8 +4,9 @@ interface props {
   children: React.ReactNode;
   onClick?: React.MouseEventHandler;
   className?: string;
+  value?: string;
 }
-export const Button = ({ children, onClick, className }: props) => {
+export const Button = ({ children, onClick, className, value }: props) => {
   return (
     <button
       className={clsx(
@@ -14,6 +15,7 @@ export const Button = ({ children, onClick, className }: props) => {
       )}
       onClick={onClick}
       type="button"
+      value={value}
     >
       {children}
     </button>
