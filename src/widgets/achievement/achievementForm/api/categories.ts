@@ -1,6 +1,6 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { CATEGORIES_URL, TOKEN } from "../../../shared/const";
+import { CATEGORIES_URL, TOKEN } from "../../../../shared/const";
 
 export const useGetCategories = () => {
   return useQuery({

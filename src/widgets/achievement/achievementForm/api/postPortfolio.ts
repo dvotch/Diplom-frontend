@@ -1,7 +1,7 @@
-import { useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { PORTFOLIO_URL, TOKEN } from "../../../shared/const";
 import { Inputs } from "../ui";
+import { PORTFOLIO_URL, TOKEN } from "../../../../shared/const";
 
 type dto = {
   userId: string;
@@ -16,9 +16,15 @@ export const postPortfolio = (dto: dto) => {
   });
 };
 
-export const useUploadPortfolio = () =>
+export const useUploadPortfolio = (client: QueryClient) =>
   useMutation({
     mutationFn: (dto: dto) => {
       return postPortfolio(dto);
+    },
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ["portfolio list"] });
+    },
+    onSettled: () => {
+      client.invalidateQueries({ queryKey: ["portfolio list"] });
     },
   });
