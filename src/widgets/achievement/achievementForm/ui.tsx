@@ -26,7 +26,7 @@ export const AchievementForm = () => {
     const inputFileText = document.querySelector(
       "input[type=file]"
     ) as HTMLInputElement;
-    inputFileText.addEventListener("change", (e: Event) => {
+    inputFileText.addEventListener("change", () => {
       if (inputFileText.files && inputFileText.files[0])
         setFileName(inputFileText.files[0].name);
     });

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Hr } from "../../../shared/components";
 import { useGetAchievements } from "./api/useGetAchievements";
 
@@ -14,6 +14,9 @@ export const AchievementList = () => {
       setPage(event.target.value);
     }
   };
+  useEffect(() => {
+    document.querySelector(".achievement-list")?.scrollIntoView();
+  }, [page]);
 
   return (
     <>
