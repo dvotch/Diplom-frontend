@@ -99,7 +99,9 @@ export const AchievementForm = () => {
           <span className="input-file-btn">Выберите файл</span>
         </div>
       </label>
-      <Button className="w-fit">Добавить в портфолио</Button>
+      <Button className="w-fit" type="submit">
+        Добавить в портфолио
+      </Button>
     </form>
   );
 };
