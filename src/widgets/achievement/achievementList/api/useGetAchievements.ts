@@ -6,7 +6,7 @@ import {
 } from "../../../../shared/const";
 import { useQuery } from "@tanstack/react-query";
 
-export const fetchMyAchievements = async (page: string) => {
+export const fetchMyAchievements = async (page: number) => {
   const data = await axios.get<AchievementResponse>(
     STUDENT_PORTFOLIO_URL + "?page=" + page,
     {
@@ -26,12 +26,11 @@ export const fetchMCategories = async () => {
   });
 };
 
-export const useGetAchievements = (page: string) => {
+export const useGetAchievements = (page: number) => {
   return useQuery({
     queryKey: ["portfolio list", page],
     queryFn: async () => {
       const achievements = await fetchMyAchievements(page);
-      console.log(achievements);
       const categories = (await fetchMCategories()).data;
 
       return achievements.data.map((elem) => {
