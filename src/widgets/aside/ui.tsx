@@ -12,7 +12,7 @@ export const Aside = () => {
     ? LinksStudent
     : LinksTeacher;
   return (
-    <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg grid place-items-center mb-4 ml-8 row-start-2 dark:border-rose-600">
+    <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg h-[90vh] grid place-items-center mb-4 ml-8 row-start-2 dark:border-rose-600">
       {isLoading || isRefetching ? (
         <div>Loading image...</div>
       ) : (

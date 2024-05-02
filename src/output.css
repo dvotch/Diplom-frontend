@@ -884,6 +884,10 @@ select:invalid {
   height: 20rem;
 }
 
+.h-\[90vh\] {
+  height: 90vh;
+}
+
 .w-10 {
   width: 2.5rem;
 }

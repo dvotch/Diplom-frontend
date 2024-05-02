@@ -1,21 +1,13 @@
-import { useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { Button, Hr } from "../../../shared/components";
 import { useGetAchievements } from "./api/useGetAchievements";
-import { PaginationButton } from "./components/paginationButton";
 import { useDeleteAchievement } from "./api/useDeleteAchievement";
 import { useQueryClient } from "@tanstack/react-query";
+import { Pagination } from "./components/paginationButton";
 
 export const AchievementList = () => {
   const [page, setPage] = useState(0);
   const { data, isLoading } = useGetAchievements(page);
-
-  const handleClickChangeCurrentPage = (
-    event: React.SyntheticEvent<HTMLDivElement>
-  ) => {
-    if (event.target instanceof HTMLButtonElement) {
-      setPage(+event.target.value);
-    }
-  };
 
   const handleClickDeleteAchievement = (
     event: React.SyntheticEvent<HTMLButtonElement>
@@ -27,15 +19,31 @@ export const AchievementList = () => {
   const quertClient = useQueryClient();
   const { mutate: deleteAchievement } = useDeleteAchievement(quertClient);
 
-  useEffect(() => {
-    document.querySelector(".achievement-list")?.scrollIntoView();
+  const ROWS_PER_PAGE = 2;
+
+  const getTotalPageCount = (rowCount: number): number =>
+    Math.ceil(rowCount / ROWS_PER_PAGE);
+
+  const handleNextPageClick = useCallback(() => {
+    const current = page;
+    const next = current + 1;
+    const total = data ? getTotalPageCount(data[0]?.lastPage) : current;
+    console.log(next, total);
+    setPage(next < total ? next : current);
+  }, [page, data]);
+
+  const handlePrevPageClick = useCallback(() => {
+    const current = page;
+    const prev = current - 1;
+
+    setPage(prev >= 0 ? prev : current);
   }, [page]);
 
   return (
     <>
       <h2 className="text-3xl mt-8">Загруженные достижения</h2>
       {isLoading ? (
-        <div>Loading...</div>
+        <div className="h-80">Loading...</div>
       ) : (
         data &&
         data.map((achievement) => (
@@ -65,14 +73,16 @@ export const AchievementList = () => {
           </div>
         ))
       )}
-      <div
-        onClick={handleClickChangeCurrentPage}
-        className="flex gap-6 achievement-list"
-      >
+      <div className="flex gap-6 achievement-list">
         {data && data?.length > 0 && (
-          <PaginationButton
-            countPages={Math.round(data[0]?.lastPage / 2)}
-            currentPage={page}
+          <Pagination
+            onNextPageClick={handleNextPageClick}
+            onPrevPageClick={handlePrevPageClick}
+            disable={{
+              left: page === 0,
+              right: page === getTotalPageCount(data[0].lastPage),
+            }}
+            nav={{ current: page, total: getTotalPageCount(data[0].lastPage) }}
           />
         )}
       </div>
