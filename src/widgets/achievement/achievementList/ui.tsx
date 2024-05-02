@@ -1,4 +1,4 @@
-import { MouseEventHandler, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Hr } from "../../../shared/components";
 import { useGetAchievements } from "./api/useGetAchievements";
 import { PaginationButton } from "./components/paginationButton";
