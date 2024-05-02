@@ -69,9 +69,9 @@ export const AchievementList = () => {
         onClick={handleClickChangeCurrentPage}
         className="flex gap-6 achievement-list"
       >
-        {data && (
+        {data && data?.length > 0 && (
           <PaginationButton
-            countPages={Math.round(data[0].lastPage / 2)}
+            countPages={Math.round(data[0]?.lastPage / 2)}
             currentPage={page}
           />
         )}
