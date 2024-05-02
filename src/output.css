@@ -872,8 +872,16 @@ select:invalid {
   height: 2rem;
 }
 
+.h-96 {
+  height: 24rem;
+}
+
 .h-screen {
   height: 100vh;
+}
+
+.h-80 {
+  height: 20rem;
 }
 
 .w-10 {
@@ -1099,11 +1107,6 @@ select:invalid {
 .border-violet-900 {
   --tw-border-opacity: 1;
   border-color: rgb(76 29 149 / var(--tw-border-opacity));
-}
-
-.bg-blue-100 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(219 234 254 / var(--tw-bg-opacity));
 }
 
 .bg-gray-500 {
