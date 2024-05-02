@@ -6,6 +6,9 @@
   .active {
     position: relative;
   }
+  .active-page {
+    border-color: #e11d48;
+  }
   .active::before {
     content: "";
     border-bottom: 4px solid purple;

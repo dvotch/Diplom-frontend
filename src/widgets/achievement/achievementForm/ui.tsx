@@ -15,7 +15,7 @@ export type Inputs = {
 };
 
 export const AchievementForm = () => {
-  const { register, handleSubmit } = useForm<Inputs>();
+  const { register, handleSubmit, reset } = useForm<Inputs>();
 
   const [fileName, setFileName] = useState("");
   const { data: categories } = useGetCategories();
@@ -37,15 +37,15 @@ export const AchievementForm = () => {
       data.photo = new Blob([data.photo[0]], { type: "image/png" });
       const userId = decodeJwt().id;
       postPortfolio({ userId, ...data });
+      reset();
     }
-
-    console.log(data);
   };
 
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
       className="mt-11 flex flex-col gap-6 text-xl w-[600px]"
+      id="addAchievement"
     >
       <label className="">
         Название файла:
@@ -61,11 +61,13 @@ export const AchievementForm = () => {
         Год:
         <div className="select mt-2 ">
           <select {...register("year")} className="indent-4" required>
-            <option selected disabled value="" hidden>
+            <option value="" hidden>
               Выберите из списка
             </option>
             {years.map((year) => (
-              <option value={+year}>{year}</option>
+              <option value={+year} key={year}>
+                {year}
+              </option>
             ))}
           </select>
         </div>
@@ -73,8 +75,13 @@ export const AchievementForm = () => {
       <label>
         Категория:
         <div className="select mt-2">
-          <select {...register("categoryId")} className="indent-4" required>
-            <option selected disabled value="" hidden>
+          <select
+            {...register("categoryId")}
+            className="indent-4"
+            required
+            defaultValue=""
+          >
+            <option value="" hidden>
               Выберите из списка
             </option>
             {categories &&

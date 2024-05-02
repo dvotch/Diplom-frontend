@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 interface props {
   children: React.ReactNode;
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   className?: string;
   value?: string;
   type?: "submit" | "reset" | "button";

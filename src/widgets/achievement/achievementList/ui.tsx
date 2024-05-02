@@ -1,19 +1,32 @@
-import { useEffect, useState } from "react";
+import { MouseEventHandler, useEffect, useState } from "react";
 import { Button, Hr } from "../../../shared/components";
 import { useGetAchievements } from "./api/useGetAchievements";
+import { PaginationButton } from "./components/paginationButton";
+import { useDeleteAchievement } from "./api/useDeleteAchievement";
+import { useQueryClient } from "@tanstack/react-query";
 
 export const AchievementList = () => {
-  const [page, setPage] = useState("0");
+  const [page, setPage] = useState(0);
   const { data, isLoading } = useGetAchievements(page);
-  console.log(data);
 
   const handleClickChangeCurrentPage = (
     event: React.SyntheticEvent<HTMLDivElement>
   ) => {
     if (event.target instanceof HTMLButtonElement) {
-      setPage(event.target.value);
+      setPage(+event.target.value);
     }
   };
+
+  const handleClickDeleteAchievement = (
+    event: React.SyntheticEvent<HTMLButtonElement>
+  ) => {
+    if (event.target instanceof HTMLButtonElement)
+      deleteAchievement(event.target.value);
+  };
+
+  const quertClient = useQueryClient();
+  const { mutate: deleteAchievement } = useDeleteAchievement(quertClient);
+
   useEffect(() => {
     document.querySelector(".achievement-list")?.scrollIntoView();
   }, [page]);
@@ -26,7 +39,7 @@ export const AchievementList = () => {
       ) : (
         data &&
         data.map((achievement) => (
-          <div>
+          <div key={achievement.id}>
             <Hr />
             <div className="grid h-40 w-10/12 grid-cols-achievementList items-center text-xl mt-4">
               <img
@@ -39,7 +52,15 @@ export const AchievementList = () => {
                 <span className="text-gray-400">{achievement.year}</span>
               </div>
               <p className="text-gray-400">{achievement.categoryId}</p>
-              <Button className="">Скачать</Button>
+              <div className="flex gap-6">
+                <Button>Скачать</Button>
+                <Button
+                  value={achievement.id}
+                  onClick={handleClickDeleteAchievement}
+                >
+                  Удалить
+                </Button>
+              </div>
             </div>
           </div>
         ))
@@ -48,12 +69,12 @@ export const AchievementList = () => {
         onClick={handleClickChangeCurrentPage}
         className="flex gap-6 achievement-list"
       >
-        {data &&
-          new Array(Math.round(data[0].lastPage / 2))
-            .fill(" ")
-            .map((_, index) => (
-              <Button value={index.toString()}>{index + 1}</Button>
-            ))}
+        {data && (
+          <PaginationButton
+            countPages={Math.round(data[0].lastPage / 2)}
+            currentPage={page}
+          />
+        )}
       </div>
     </>
   );
