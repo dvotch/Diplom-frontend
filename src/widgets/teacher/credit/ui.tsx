@@ -7,7 +7,6 @@ import { useLessons } from "./api/lessons";
 import { useUserName } from "./api/userName";
 
 import axios from "axios";
-import { ICredit } from "./interfaces";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ILesson, IUser } from "./interfaces";
 
@@ -119,7 +118,7 @@ export const Credit = () => {
             )}
           </tbody>
         </table>
-        <div className="flex flex justify-center ">
+        <div className=" flex justify-center ">
           <button
             className="mr-4 mt-2 dark:text-white hover:opacity-50  opacity-70 font-bold "
             onClick={() => setIsOpen(true)}

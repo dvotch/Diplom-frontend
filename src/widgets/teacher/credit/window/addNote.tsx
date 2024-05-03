@@ -7,7 +7,7 @@ import { useLessons } from "../api/lessons";
 import { useUserGroup } from "../api/userGroup";
 import { useState } from "react";
 import axios from "axios";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 
 export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
   const { data: lessons } = useLessons();
@@ -49,8 +49,6 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     };
 
     try {
-      const form = document.querySelector("#form228") as HTMLFormElement;
-
       setSelectedLessonId("");
       setSelectedUserId("");
       setSelectedDateStart("");

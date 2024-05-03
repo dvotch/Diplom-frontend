@@ -2,7 +2,6 @@ import axios from "axios";
 import { useUsersMarks } from "../api/marks";
 import { IUser } from "../interfaces";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
 import { useAverageMarks } from "../api/averageMark";
 
 export const UserCard = ({
@@ -26,7 +25,7 @@ export const UserCard = ({
     return date === monthCompare;
   });
 
-  const getStatement = async (lesson: string, userId: string) => {
+  const getStatement = async (lesson: string) => {
     const TOKEN = localStorage.getItem("token");
 
     return await axios.get(
@@ -67,7 +66,7 @@ export const UserCard = ({
   const queryClient = useQueryClient();
   const { mutate } = useMutation({
     mutationFn: async (day: number) => {
-      const { data } = await getStatement(lesson, user.id);
+      const { data } = await getStatement(lesson);
       const statementId = data[0];
       await postMark(day, statementId);
     },
@@ -84,7 +83,7 @@ export const UserCard = ({
 
   const handleCellClick = async (day: number) => {
     try {
-      const { data } = await getStatement(lesson, user.id);
+      const { data } = await getStatement(lesson);
       const statementId = data[0];
       await mutate(day, statementId);
     } catch (error) {}
