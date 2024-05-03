@@ -16,7 +16,7 @@ export const Aside = () => {
       {isLoading || isRefetching ? (
         <div>Loading image...</div>
       ) : (
-        <img src={data} id="img" className="mix-blend-multiply" width={150} />
+        <img src={data} id="img" width={150} />
       )}
       <h2 className="text-sub-100 text-2xl dark:text-white">
         {decode.name + " " + decode.surname}
