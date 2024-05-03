@@ -1,46 +1,50 @@
 import { Quarter } from "./config/quarters";
 import { useState } from "react";
-import { useLessons } from "./api/lessons";
-import { useMarks } from "./api/marks";
-import { LessonButton, QuaterButtons } from "./components";
+import { useLessons } from "./api/lessonsGroup";
+import { LessonButton } from "./components";
+import { GroupButtons } from "./components/GroupButtons";
 
-export const Statement = () => {
-  const [quater, setQuater] = useState(1);
-  const [lesson, setLesson] = useState("");
-  const { data: lessons, isLoading: isLoadingLessons } = useLessons(quater);
-  const { data: marks } = useMarks(lesson);
-  const odd = quater % 2 === 1;
+export const StatementTeacher = () => {
+  const [group, setGroup] = useState(205);
+  const [currentLesson, setCurrentLesson] = useState("");
+  const { data: lessons, isLoading: isLoadingLessons } = useLessons(group);
+  const quarter = document.querySelector("#quarter");
+  const changeLesson = (e: React.MouseEvent<HTMLElement>) => {
+    if (e.target instanceof HTMLButtonElement) {
+      const button = e.target;
+      setCurrentLesson(button.value);
+      document.querySelector("div > .active")?.classList.remove("active");
+      button.classList.add("active");
+      quarter?.classList.remove("hidden");
+    }
+  };
 
-  const changeQuater = (e: React.MouseEvent<HTMLElement>) => {
+  const changeGroup = (e: React.MouseEvent<HTMLElement>) => {
     if (e.target instanceof HTMLButtonElement) {
       const button = e.target;
       document.querySelector("nav > .active")?.classList.remove("active");
       button.classList.add("active");
-      setQuater(+button.value);
-      setLesson("");
-    }
-  };
-
-  const changeLesson = (e: React.MouseEvent<HTMLElement>) => {
-    if (e.target instanceof HTMLButtonElement) {
-      const button = e.target;
-      document.querySelector("div > .active")?.classList.remove("active");
-      button.classList.add("active");
-      setLesson(button.value);
+      setGroup(+button.value);
     }
   };
 
   return (
     <div className=" grid grid-cols-statement grid-rows-statement pr-5 dark:text-white">
       <h1 className=" text-5xl dark:text-white ">Журнал</h1>
-      <QuaterButtons onClick={changeQuater} />
+
       {isLoadingLessons ? (
         <div>Loading</div>
       ) : (
         <LessonButton lessons={lessons} onClick={changeLesson} />
       )}
-
-      {lesson && marks && <Quarter odd={odd} marks={marks} />}
+      <div></div>
+      <div></div>
+      <div>
+        <GroupButtons onClick={changeGroup} />
+      </div>
+      <div id="quarter" className="hidden">
+        <Quarter currentLesson={currentLesson} group={group} />
+      </div>
     </div>
   );
 };

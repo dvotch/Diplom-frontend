@@ -1,65 +1,111 @@
-import { IMark } from "../../../statement/interfaces";
-import { evenMonths, oddMonths } from "./months";
+import { useState } from "react";
+import { useUserGroup } from "../../credit/api/userGroup";
+import { useLessonsAll } from "../api/lessons";
 
-export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {
-  const months = odd ? Object.entries(oddMonths) : Object.entries(evenMonths);
+import { allMonth } from "./months";
+import { UserCard } from "./userCard";
+import { useAverageMarks } from "../api/averageMark";
+
+export const Quarter = ({
+  group,
+  currentLesson,
+}: {
+  group: number;
+  currentLesson: string;
+}) => {
   const days: number[] = [];
-
-  for (let i = 1; i <= 31; i++) days.push(i);
-
-  type TMarks = {
-    [key: string]: number;
+  const [monthCompare, setMonthCompare] = useState("");
+  const [selectedMark, setSelectedMark] = useState("2");
+  const handleMarkSelection = (mark: string) => {
+    setSelectedMark(mark);
   };
 
-  const editMarks: TMarks = {};
-  marks.map((data) => {
-    const date = new Date(data.date);
-    const day =
-      date.getDate() < 10 ? "0" + date.getDate() : date.getDate().toString();
-    const month =
-      date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth().toString();
-    editMarks[month + day] = data.mark;
-  });
-  console.log(editMarks);
+  const { data: lessons } = useLessonsAll();
+  const { data: usersGroup } = useUserGroup(group);
 
+  for (let i = 1; i <= 31; i++) days.push(i);
+  const handelClick = (event: React.SyntheticEvent) => {
+    const button = event.target;
+    if (button instanceof HTMLButtonElement) setMonthCompare(button.value);
+  };
   return (
-    <table className="table-fixed border-2 border-black row-start-3 h-1/2 dark:border-white">
-      <thead>
-        <tr>
-          <th className="w-20"></th>
-          {days.map((value) => {
+    <div className="">
+      <div className="flex justify-between">
+        {lessons?.map((value) => {
+          if (currentLesson === value.id) {
+            const dateStart = new Date(value.dateStart);
+            const monthStart = dateStart.getMonth();
+            const dateEnd = new Date(value.dateEnd);
+            const monthEnd = dateEnd.getMonth();
+            const months = [];
+            for (let i = monthStart; i <= monthEnd; i++) {
+              months.push(i);
+            }
             return (
-              <th className="border-[1px] border-red-500  w-6" key={value}>
-                {value}
-              </th>
+              <div onClick={handelClick}>
+                {months.map((monthIndex, index) => (
+                  <button className="ml-4" key={index} value={monthIndex}>
+                    {allMonth[monthIndex]}
+                  </button>
+                ))}
+              </div>
             );
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {months.map((month) => {
-          return (
-            <tr
-              className="border-[1px] border-red-500 text-center"
-              key={month[1]}
-            >
-              <td>{month[1]}</td>
-              {days.map((day) => {
-                return (
-                  <td
-                    className="border-[1px] border-red-500"
-                    key={month[1] + day}
-                  >
-                    {editMarks.hasOwnProperty(month[0] + day)
-                      ? editMarks[month[0] + day]
-                      : ""}
-                  </td>
-                );
-              })}
-            </tr>
-          );
+          }
         })}
-      </tbody>
-    </table>
+        <div className=" ">
+          <div className="">
+            <button className="ml-2" onClick={() => handleMarkSelection("Н")}>
+              Н
+            </button>
+            <button className="ml-2" onClick={() => handleMarkSelection("Н/Б")}>
+              Н/Б
+            </button>
+            <button
+              className="ml-2 text-red-600"
+              onClick={() => handleMarkSelection("2")}
+            >
+              2
+            </button>
+            <button className="ml-2" onClick={() => handleMarkSelection("3")}>
+              3
+            </button>
+            <button className="ml-2" onClick={() => handleMarkSelection("4")}>
+              4
+            </button>
+            <button className="ml-2" onClick={() => handleMarkSelection("5")}>
+              5
+            </button>
+          </div>
+        </div>
+      </div>
+      <table className="table-fixed border-2 border-black row-start-3 h-1/2  dark:border-white w-full">
+        <thead>
+          <tr>
+            <th className="w-20"></th>
+            {days.map((value) => {
+              return (
+                <th className="border-[1px] border-red-500  w-9" key={value}>
+                  {value}
+                </th>
+              );
+            })}
+            <div className="text-center font-semibold text-red-600">ИТОГ</div>
+          </tr>
+        </thead>
+        <tbody>
+          {usersGroup &&
+            usersGroup.map((usersGroup) => {
+              return (
+                <UserCard
+                  user={usersGroup}
+                  lesson={currentLesson}
+                  monthCompare={monthCompare}
+                  selectedMark={selectedMark}
+                />
+              );
+            })}
+        </tbody>
+      </table>
+    </div>
   );
 };

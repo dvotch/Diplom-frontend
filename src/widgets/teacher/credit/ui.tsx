@@ -3,7 +3,12 @@ import { useCredit } from "./api";
 import AddRecordModal from "./window/addNote";
 import { formatDateTime } from "./api/dateConvertString";
 import { useLessons } from "./api/lessons";
+
 import { useUserName } from "./api/userName";
+
+import axios from "axios";
+import { ICredit } from "./interfaces";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ILesson, IUser } from "./interfaces";
 
 export const Credit = () => {
@@ -24,6 +29,38 @@ export const Credit = () => {
     },
     {}
   );
+
+  const queryClient = useQueryClient();
+  const DeleteUserName = async (creditId: string) => {
+    const TOKEN = localStorage.getItem("token");
+
+    return await axios.delete(
+      "http://prod.dvotch.ru:3001/api/credit/" + creditId,
+      {
+        headers: {
+          Authorization: TOKEN,
+        },
+      }
+    );
+  };
+  const { mutate } = useMutation({
+    mutationFn: (creditId: string) => DeleteUserName(creditId),
+    onSettled: () =>
+      queryClient.invalidateQueries({ queryKey: ["credit teacher"] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["credit teacher"] }),
+  });
+
+  const handleDelete = async (creditId: string) => {
+    try {
+      DeleteUserName(creditId);
+      mutate(creditId);
+      alert("Запись удалена");
+    } catch (error) {
+      console.error("Ошибка запроса:", error);
+    }
+  };
+
   return (
     <div className="">
       <h1 className="text-4xl dark:text-white mb-4">Задолжности</h1>
@@ -74,6 +111,9 @@ export const Credit = () => {
                   <td className="text-center text-red-700">
                     {formatDateTime(credit.deadLine.toString())}
                   </td>
+                  <button onClick={() => handleDelete(credit.id)}>
+                    Удалить
+                  </button>
                 </tr>
               ))
             )}
@@ -86,6 +126,7 @@ export const Credit = () => {
           >
             Добавить запись
           </button>
+
           <AddRecordModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
         </div>
       </div>

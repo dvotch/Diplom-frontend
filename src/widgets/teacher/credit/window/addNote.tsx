@@ -1,5 +1,5 @@
 import { useCredit } from "../api/credits";
-import { AddRecordModalProps } from "../interfaces";
+import { AddRecordModalProps, ICreditPost } from "../interfaces";
 import CloseIcon from "@mui/icons-material/Close";
 
 import { useLessons } from "../api/lessons";
@@ -7,19 +7,36 @@ import { useLessons } from "../api/lessons";
 import { useUserGroup } from "../api/userGroup";
 import { useState } from "react";
 import axios from "axios";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
   const { data: lessons } = useLessons();
   const { data: credits } = useCredit();
 
-  const { data: usersGroup } = useUserGroup("205");
+  const { data: usersGroup } = useUserGroup(205);
 
   const [selectedLessonId, setSelectedLessonId] = useState("");
   const [selectedUserId, setSelectedUserId] = useState("");
   const [selectedDateStart, setSelectedDateStart] = useState("");
   const [selectedOffice, setSelectedOffice] = useState("");
   const [selectedDateEnd, setSelectedDateEnd] = useState("");
+  const queryClient = useQueryClient();
+  const PostUserName = async (data: ICreditPost) => {
+    const TOKEN = localStorage.getItem("token");
 
+    return await axios.post("http://prod.dvotch.ru:3001/api/credit", data, {
+      headers: {
+        Authorization: TOKEN,
+      },
+    });
+  };
+  const { mutate } = useMutation({
+    mutationFn: (data: ICreditPost) => PostUserName(data),
+    onSettled: () =>
+      queryClient.invalidateQueries({ queryKey: ["credit teacher"] }),
+    onSuccess: () =>
+      queryClient.invalidateQueries({ queryKey: ["credit teacher"] }),
+  });
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -32,18 +49,18 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     };
 
     try {
-      const PostUserName = async () => {
-        const TOKEN = localStorage.getItem("token");
-        return await axios.post("http://prod.dvotch.ru:3001/api/credit", data, {
-          headers: {
-            Authorization: TOKEN,
-          },
-        });
-      };
-      PostUserName();
+      const form = document.querySelector("#form228") as HTMLFormElement;
+
+      setSelectedLessonId("");
+      setSelectedUserId("");
+      setSelectedDateStart("");
+      setSelectedOffice("");
+      setSelectedDateEnd("");
     } catch (error) {
       console.error("Ошибка при выполнении запроса:", error);
     }
+    mutate(data);
+    alert("Добавлено");
   };
 
   return (
@@ -54,6 +71,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
           <form
             className="fixed inset-0 flex items-center justify-center h-screen bg-gray-500 bg-opacity-10 "
             onSubmit={handleSubmit}
+            id="form228"
           >
             <div className="flex-row  bg-white p-4  shadow-lg w-2/12 h-10/12 rounded-lg ">
               <div className="flex justify-center">
@@ -100,7 +118,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                     value={selectedUserId}
                     onChange={(e) => setSelectedUserId(e.target.value)}
                   >
-                    <option value=" " disabled selected>
+                    <option value="" disabled selected>
                       ФИО
                     </option>
                     {usersGroup &&

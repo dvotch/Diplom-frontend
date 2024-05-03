@@ -5,7 +5,7 @@ import {
 } from "react-router-dom";
 import { RootLayot } from "../layout/Root";
 import { Statement } from "../../widgets/statement/ui";
-
+import { StatementTeacher } from "../../widgets/teacher/statement/ui";
 import Login from "../../widgets/login/ui";
 import { NotFound } from "../../pages/404/NotFound";
 import { Settings } from "../../widgets";
@@ -26,7 +26,7 @@ export const route = createBrowserRouter(
         </Route>
         <Route element={<TeacherGuardRoute />}>
           <Route element={<Credit />} path="teacher/credit" />
-          <Route element={<Statement />} path="teacher/statement" />
+          <Route element={<StatementTeacher />} path="teacher/statement" />
         </Route>
         <Route element={<Settings />} path="settings" />
         <Route element={<PortfolioPage />} path="portfolio" />

@@ -1,11 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import { IMark } from "../interfaces";
 import { TOKEN } from "../../../../shared/const";
-import { IMark } from "../../../statement/interfaces";
 
-export const fetchStudentMarks = async (lessonId: string) => {
+export const fetchUsersMarksByLesson = async (
+  userId: string,
+  lessonId: string
+) => {
   return await axios.get<IMark[]>(
-    "http://prod.dvotch.ru:3001/api/student/marks/" + lessonId,
+    "http://prod.dvotch.ru:3001/api/mark/" + lessonId + "/" + userId,
     {
       headers: {
         Authorization: TOKEN(),
@@ -14,10 +17,10 @@ export const fetchStudentMarks = async (lessonId: string) => {
   );
 };
 
-export const useMarks = (lessonId: string) => {
+export const useUsersMarks = (userId: string, lessonId: string) => {
   return useQuery({
-    queryKey: ["marks student", lessonId],
-    queryFn: () => fetchStudentMarks(lessonId),
+    queryKey: ["marks student", userId, lessonId],
+    queryFn: () => fetchUsersMarksByLesson(userId, lessonId),
     select: ({ data }) => data,
     enabled: !!lessonId,
   });
