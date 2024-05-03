@@ -84,12 +84,14 @@ export const Quarter = ({
             <th className="w-20"></th>
             {days.map((value) => {
               return (
-                <th className="border-[1px] border-red-500  w-9" key={value}>
+                <th className="border-[1px] border-red-500  w-6" key={value}>
                   {value}
                 </th>
               );
             })}
-            <div className="text-center font-semibold text-red-600">ИТОГ</div>
+            <td className="text-center font-semibold w-9 text-red-600 text-xs">
+              ИТОГ
+            </td>
           </tr>
         </thead>
         <tbody>
