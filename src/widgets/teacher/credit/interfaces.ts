@@ -6,6 +6,13 @@ export interface ICredit {
   office: string;
   userId: string;
 }
+export interface ICreditPost {
+  date: Date;
+  deadLine: Date;
+  lessonId: string;
+  office: number;
+  userId: string;
+}
 export interface AddRecordModalProps {
   isOpen: boolean;
   onClose: () => void;
