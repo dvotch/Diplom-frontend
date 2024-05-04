@@ -8,7 +8,7 @@ export const deleteUserOrganization = (id: string) => {
   });
 };
 
-export const useLeaveFromOrganization = (queryClient: QueryClient) =>
+export const useLeaveFromOrganization = () =>
   useMutation({
     mutationFn: (id: string) => deleteUserOrganization(id),
   });

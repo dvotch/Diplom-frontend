@@ -1,5 +1,5 @@
 import axios from "axios";
-import { ORGANIZATION_URL, TOKEN } from "../../../shared/const";
+import { ORGANIZATION_URL } from "../../../shared/const";
 import { useMutation } from "@tanstack/react-query";
 
 export const postOrganization = (data: IPostOrganization) => {
