@@ -145,4 +145,30 @@
   .input-file input[type="file"]:disabled + .input-file-btn {
     background-color: #eee;
   }
+
+  dialog[open] {
+    animation: show 1s;
+  }
+
+  .hide {
+    animation: hide 1s;
+  }
+
+  @keyframes show {
+    from {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0%);
+    }
+  }
+
+  @keyframes hide {
+    to {
+      opacity: 0;
+      transform: translateY(-100%);
+    }
+  }
 }

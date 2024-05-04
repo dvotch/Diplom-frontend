@@ -1,6 +1,7 @@
 import { useQueryClient } from "@tanstack/react-query";
 import { useUploadLogo } from "./api/logo";
 import { Button } from "../../shared/components";
+import { AddOrganizationForm } from "../addOrganization/addOrganizationForm";
 
 export const Settings = () => {
   const queryClient = useQueryClient();
@@ -19,9 +20,10 @@ export const Settings = () => {
     <div>
       <input type="file" id="file" />
       <br />
-      <Button onClick={handleClick} className="mt-4">
+      <Button onClick={handleClick} className="mt-4" variant="outlined">
         Добавить
       </Button>
+      <AddOrganizationForm />
     </div>
   );
 };
