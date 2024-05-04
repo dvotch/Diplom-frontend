@@ -10,7 +10,7 @@ import { Button } from "../../../shared/components";
 export type Inputs = {
   name: string;
   year: number;
-  categoryId: number;
+  categoryId: string;
   photo: FileList | Blob;
 };
 
@@ -106,7 +106,7 @@ export const AchievementForm = () => {
           <span className="input-file-btn">Выберите файл</span>
         </div>
       </label>
-      <Button className="w-fit" type="submit">
+      <Button className="w-fit" type="submit" variant="outlined">
         Добавить в портфолио
       </Button>
     </form>

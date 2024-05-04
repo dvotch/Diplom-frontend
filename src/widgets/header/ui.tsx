@@ -91,7 +91,11 @@ export const Header = () => {
                 </button>
               </span>
             </div>
-            <Button className="hover:opacity-50  " onClick={handleLogout}>
+            <Button
+              className="hover:opacity-50  "
+              onClick={handleLogout}
+              variant="outlined"
+            >
               Выйти
             </Button>
           </div>

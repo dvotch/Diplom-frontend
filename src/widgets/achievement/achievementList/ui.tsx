@@ -61,8 +61,9 @@ export const AchievementList = () => {
               </div>
               <p className="text-gray-400">{achievement.categoryId}</p>
               <div className="flex gap-6">
-                <Button>Скачать</Button>
+                <Button variant="outlined">Скачать</Button>
                 <Button
+                  variant="outlined"
                   value={achievement.id}
                   onClick={handleClickDeleteAchievement}
                 >

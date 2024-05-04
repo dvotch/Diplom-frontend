@@ -15,7 +15,9 @@ export const Forbidden = () => {
         Если вы уверены, что вам нужна эта страница, запросите доступ у
         администратора
       </p>
-      <Button onClick={goBack}>Вернуться назад</Button>
+      <Button onClick={goBack} variant="outlined">
+        Вернуться назад
+      </Button>
     </div>
   );
 };
