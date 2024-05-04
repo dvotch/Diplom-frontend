@@ -1,6 +1,6 @@
 import axios from "axios";
 import { STUDENT_ORGANIZATION_URL, TOKEN } from "../../../shared/const";
-import { QueryClient, useMutation } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 export const deleteUserOrganization = (id: string) => {
   return axios.delete(STUDENT_ORGANIZATION_URL + "/" + id, {
@@ -8,7 +8,7 @@ export const deleteUserOrganization = (id: string) => {
   });
 };
 
-export const useLeaveFromOrganization = (queryClient: QueryClient) =>
+export const useLeaveFromOrganization = () =>
   useMutation({
     mutationFn: (id: string) => deleteUserOrganization(id),
   });
