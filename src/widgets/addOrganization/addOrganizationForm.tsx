@@ -37,7 +37,7 @@ export const AddOrganizationForm = () => {
       className="w-[520px] mt-8 flex flex-col gap-3"
     >
       <h2 className="text-purple-600 text-3xl font-bold place-self-center">
-        Зарегестрировать организацию
+        Зарегистрировать организацию
       </h2>
       <section className="mt-4 w-4/5">
         <label>

@@ -12,7 +12,7 @@ export const Aside = () => {
     ? LinksStudent
     : LinksTeacher;
   return (
-    <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg h-[90vh] grid place-items-center mb-4 ml-8 row-start-2 dark:border-rose-600">
+    <aside className=" py-8 border-[1px] border-purple-900 text-sub-100 text-lg h-fit grid place-items-center mb-4 ml-8 row-start-2 dark:border-rose-600">
       {isLoading || isRefetching ? (
         <div>Loading image...</div>
       ) : (
@@ -25,8 +25,10 @@ export const Aside = () => {
         {Role[decode.roles[0]]}
       </span>
       <p className="mt-5">Зеленодольск, Татарстан</p>
-      <p className="w-64 text-center mt-2">{decode.specialization}</p>
-      <p className="mt-2">{decode.group + " группа"}</p>
+      {decode.specialization && (
+        <p className="w-64 text-center mt-2">{decode.specialization}</p>
+      )}
+      {decode.group && <p className="mt-2">{decode.group + " группа"}</p>}
       <ul className="mt-6 w-60 ">
         {linksMenu.map((link, index) => (
           <li key={index}>
