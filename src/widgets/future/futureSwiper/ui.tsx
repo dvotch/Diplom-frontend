@@ -1,19 +1,37 @@
 import { Swiper, SwiperSlide } from "swiper/react";
+import { Pagination } from "swiper/modules";
 
-import "swiper/css";
 import { Button } from "../../../shared/components";
 import { IWork } from "../interfaces";
-import { useState } from "react";
+import { CSSProperties, useState } from "react";
+
+import "swiper/css";
+import "swiper/css/pagination";
 
 export const FutureSwiper = ({ data }: { data: IWork[] }) => {
   const [showPhone, setShowPhone] = useState(false);
+
   return (
     <div className="w-[1224px] mt-8">
-      <Swiper spaceBetween={50} slidesPerView={2} className="w-full h-44">
+      <Swiper
+        style={
+          {
+            "--swiper-pagination-color": "rgb(147 51 234 )",
+          } as CSSProperties
+        }
+        spaceBetween={50}
+        slidesPerView={2}
+        className="w-full h-60 "
+        modules={[Pagination]}
+        pagination={{
+          clickable: true,
+        }}
+        grabCursor
+      >
         {data.map((elem) => {
           return (
-            <SwiperSlide>
-              <div className="flex justify-between flex-col h-full border-l-4 border-l-purple-600 p-2">
+            <SwiperSlide style={{ width: "680px" }} key={elem.id}>
+              <div className="flex justify-between flex-col h-3/4 border-l-4 border-l-purple-600 p-2">
                 <div className="text-2xl">
                   <h2>{elem.name}</h2>
                   <h2>{"от" + elem.cost + "₽"}</h2>
