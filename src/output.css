@@ -877,6 +877,14 @@ dialog[open] {
   margin-top: 2rem;
 }
 
+.mt-10 {
+  margin-top: 2.5rem;
+}
+
+.mt-12 {
+  margin-top: 3rem;
+}
+
 .flex {
   display: flex;
 }
@@ -923,6 +931,10 @@ dialog[open] {
   height: 10rem;
 }
 
+.h-52 {
+  height: 13rem;
+}
+
 .h-60 {
   height: 15rem;
 }
@@ -935,25 +947,21 @@ dialog[open] {
   height: 20rem;
 }
 
-.h-\[70vh\] {
-  height: 70vh;
+.h-fit {
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.h-full {
+  height: 100%;
 }
 
 .h-screen {
   height: 100vh;
 }
 
-.h-auto {
-  height: auto;
-}
-
-.h-fit {
-  height: -moz-fit-content;
-  height: fit-content;
-}
-
-.h-\[90vh\] {
-  height: 90vh;
+.h-44 {
+  height: 11rem;
 }
 
 .w-10 {
@@ -1008,6 +1016,10 @@ dialog[open] {
   width: 2.25rem;
 }
 
+.w-\[1024px\] {
+  width: 1024px;
+}
+
 .w-\[400px\] {
   width: 400px;
 }
@@ -1043,6 +1055,30 @@ dialog[open] {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-40 {
+  width: 10rem;
+}
+
+.w-\[1124px\] {
+  width: 1124px;
+}
+
+.w-\[1224px\] {
+  width: 1224px;
+}
+
+.w-5\/6 {
+  width: 83.333333%;
+}
+
+.w-4\/6 {
+  width: 66.666667%;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .flex-1 {
@@ -1133,6 +1169,10 @@ dialog[open] {
   gap: 2rem;
 }
 
+.gap-2 {
+  gap: 0.5rem;
+}
+
 .gap-x-12 {
   -moz-column-gap: 3rem;
        column-gap: 3rem;
@@ -1195,6 +1235,14 @@ dialog[open] {
   border-bottom-width: 2px;
 }
 
+.border-l-4 {
+  border-left-width: 4px;
+}
+
+.border-l-8 {
+  border-left-width: 8px;
+}
+
 .border-solid {
   border-style: solid;
 }
@@ -1232,6 +1280,26 @@ dialog[open] {
 .border-violet-900 {
   --tw-border-opacity: 1;
   border-color: rgb(76 29 149 / var(--tw-border-opacity));
+}
+
+.border-l-black {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(0 0 0 / var(--tw-border-opacity));
+}
+
+.border-l-purple-800 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(107 33 168 / var(--tw-border-opacity));
+}
+
+.border-l-purple-400 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(192 132 252 / var(--tw-border-opacity));
+}
+
+.border-l-purple-600 {
+  --tw-border-opacity: 1;
+  border-left-color: rgb(147 51 234 / var(--tw-border-opacity));
 }
 
 .bg-gray-500 {
@@ -1431,6 +1499,10 @@ dialog[open] {
   font-weight: 600;
 }
 
+.font-normal {
+  font-weight: 400;
+}
+
 .text-black {
   --tw-text-opacity: 1;
   color: rgb(0 0 0 / var(--tw-text-opacity));
@@ -1494,6 +1566,11 @@ dialog[open] {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-gray-200 {
+  --tw-text-opacity: 1;
+  color: rgb(229 231 235 / var(--tw-text-opacity));
 }
 
 .placeholder-white::-moz-placeholder {
