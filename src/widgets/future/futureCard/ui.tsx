@@ -1,6 +1,5 @@
 import { Button } from "../../../shared/components";
 import { ILearn } from "../interfaces";
-import image from "./image.png (1).png";
 
 export const FutureCard = ({ data }: { data: ILearn[] }) => {
   return (
@@ -8,7 +7,7 @@ export const FutureCard = ({ data }: { data: ILearn[] }) => {
       {data.map((elem) => {
         return (
           <div className="bg-white flex rounded-xl text-xl gap-4 p-4 border-2">
-            <img src={image} alt="" width={200} />
+            <img src={elem.photo} alt="" width={200} />
             <div className="flex flex-col gap-2">
               <h2>{elem.place}</h2>
               <p className="font-medium w-5/6">{elem.name}</p>
