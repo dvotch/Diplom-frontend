@@ -3,16 +3,15 @@ import { useCredit } from "./api";
 import AddRecordModal from "./window/addNote";
 import { formatDateTime } from "./api/dateConvertString";
 import { useLessons } from "./api/lessons";
-
-import { useUserName } from "./api/userName";
-
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { ILesson, IUser } from "./interfaces";
+import { useUserGroup1 } from "./api/userGroupAll";
 
 export const Credit = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const { data: users } = useUserName();
+
+  const { data: users } = useUserGroup1();
   const { data: credits, isLoading } = useCredit();
   const { data: lessons } = useLessons();
   const lessonsById: { [key: string]: ILesson } | undefined = lessons?.reduce(

@@ -4,10 +4,11 @@ import CloseIcon from "@mui/icons-material/Close";
 
 import { useLessons } from "../api/lessons";
 
-import { useUserGroup } from "../api/userGroup";
 import { useState } from "react";
 import axios from "axios";
-import { useMutation, useQueryClient } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
+import { useUserGroup1 } from "../api/userGroupAll";
+import { useUserGroup } from "../api/userGroup";
 
 export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
   const { data: lessons } = useLessons();
@@ -25,6 +26,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     const TOKEN = localStorage.getItem("token");
 
     return await axios.post("http://prod.dvotch.ru:3001/api/credit", data, {
+      //дата передача
       headers: {
         Authorization: TOKEN,
       },
@@ -65,7 +67,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     <>
       {isOpen &&
         credits &&
-        credits.map((credit) => (
+        credits.map(() => (
           <form
             className="fixed inset-0 flex items-center justify-center h-screen bg-gray-500 bg-opacity-10 "
             onSubmit={handleSubmit}
@@ -92,37 +94,40 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                     Выберите предмет
                   </div>
                   <select
-                    className="w-56 border-solid mt-2 border-2  font-regular rounded-lg"
+                    className="w-56 border-solid mt-2 border-2 font-regular rounded-lg"
                     name="email"
                     value={selectedLessonId}
                     onChange={(e) => setSelectedLessonId(e.target.value)}
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       Название
                     </option>
                     {lessons &&
-                      lessons.map((lessons) => (
-                        <option value={credit.lessonId}>{lessons.name}</option>
+                      lessons.map((lesson) => (
+                        <option key={lesson.id} value={lesson.id}>
+                          {lesson.name}
+                        </option>
                       ))}
                   </select>
                 </div>
+
                 <div>
                   <div className="flex-col font-regular text-indigo-950">
                     Выберите студента
                   </div>
                   <select
-                    className="w-56 border-solid mt-2 border-2  font-regular rounded-lg"
+                    className="w-56 border-solid mt-2 border-2 font-regular rounded-lg"
                     name="email"
                     value={selectedUserId}
                     onChange={(e) => setSelectedUserId(e.target.value)}
                   >
-                    <option value="" disabled selected>
+                    <option value="" disabled>
                       ФИО
                     </option>
                     {usersGroup &&
-                      usersGroup.map((usersGroup) => (
-                        <option value={credit.userId}>
-                          {usersGroup.name + " " + usersGroup.surname}
+                      usersGroup.map((user) => (
+                        <option key={user.id} value={user.id}>
+                          {user.name + " " + user.surname}
                         </option>
                       ))}
                   </select>

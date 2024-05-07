@@ -16,6 +16,7 @@ const AuthForm = () => {
     if (roles.includes("STUDENT") || roles.includes("TEACHER")) {
       return navigate("/", { replace: true });
     }
+    return navigate("/settings", { replace: true });
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

@@ -34,4 +34,17 @@ export interface IUserGroup {
   id: string;
   name: string;
   surname: string;
+  patronymic: string;
+  email: string;
+  password: string;
+  avatar: string;
+  dateOfReceipt: string;
+  group: number;
+  phoneNumber: string;
+  roles: string;
+  specializationId: string;
+}
+export interface IGroupMy {
+  id: string;
+  group: string;
 }

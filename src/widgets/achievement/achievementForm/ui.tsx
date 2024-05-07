@@ -44,7 +44,7 @@ export const AchievementForm = () => {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mt-11 flex flex-col gap-6 text-xl w-[600px]"
+      className="mt-11 flex flex-col gap-6 text-xl w-[600px] dark:text-white"
       id="addAchievement"
     >
       <label className="">
@@ -103,7 +103,7 @@ export const AchievementForm = () => {
             </div>
           </span>
           <input type="file" className="" id="file" {...register("photo")} />
-          <span className="input-file-btn">Выберите файл</span>
+          <span className="input-file-btn dark:text-white">Выберите файл</span>
         </div>
       </label>
       <Button className="w-fit" type="submit" variant="outlined">

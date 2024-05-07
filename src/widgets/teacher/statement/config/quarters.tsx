@@ -21,7 +21,6 @@ export const Quarter = ({
 
   const { data: lessons } = useLessonsAll();
   const { data: usersGroup } = useUserGroup(group);
-
   for (let i = 1; i <= 31; i++) days.push(i);
   const handelClick = (event: React.SyntheticEvent) => {
     const button = event.target;
@@ -53,6 +52,9 @@ export const Quarter = ({
         })}
         <div className=" ">
           <div className="">
+            <button className="ml-2 " onClick={() => handleMarkSelection("0")}>
+              Удалить
+            </button>
             <button className="ml-2" onClick={() => handleMarkSelection("Н")}>
               Н
             </button>
