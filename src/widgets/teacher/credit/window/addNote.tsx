@@ -6,8 +6,7 @@ import { useLessons } from "../api/lessons";
 
 import { useState } from "react";
 import axios from "axios";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { useUserGroup1 } from "../api/userGroupAll";
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUserGroup } from "../api/userGroup";
 
 export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
