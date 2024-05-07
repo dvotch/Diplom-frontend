@@ -11,6 +11,7 @@ export const STUDENT_ORGANIZATION_URL = STUDENT_URL + "/organization";
 export const STUDENT_CREDIT_URL = STUDENT_URL + "/credits";
 export const STUDENT_TEACHER_URL = STUDENT_URL + "/user";
 export const STUDENT_LESSON_URL = STUDENT_URL + "/lesson";
+export const STUDENT_FUTURE_URL = STUDENT_URL + "/future";
 
 export const TEACHER_URL = BASE_URL + "/teacher";
 export const TEACHER_STATEMENT_URL = TEACHER_URL + "/statement";

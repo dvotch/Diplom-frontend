@@ -20,7 +20,7 @@ export const LinksStudent: LinkData[] = [
     text: "Задолженности",
   },
   {
-    path: "/student/feature",
+    path: "/student/future",
     text: "Возможности",
   },
 ];
