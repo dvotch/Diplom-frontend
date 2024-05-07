@@ -3,6 +3,7 @@ import { evenMonths, oddMonths } from "./months";
 
 export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {
   const months = odd ? Object.entries(oddMonths) : Object.entries(evenMonths);
+  console.log(months);
   const days: number[] = [];
 
   for (let i = 1; i <= 31; i++) days.push(i);
@@ -20,7 +21,6 @@ export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {
       date.getMonth() < 10 ? "0" + date.getMonth() : date.getMonth().toString();
     editMarks[month + day] = data.mark;
   });
-  console.log(editMarks);
 
   return (
     <table className="table-fixed border-2 border-black row-start-3 h-1/2 dark:border-white">
@@ -45,13 +45,14 @@ export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {
             >
               <td>{month[1]}</td>
               {days.map((day) => {
+                const currentDay = day < 10 ? "0" + day : day;
                 return (
                   <td
                     className="border-[1px] border-red-500"
                     key={month[1] + day}
                   >
-                    {editMarks.hasOwnProperty(month[0] + day)
-                      ? editMarks[month[0] + day]
+                    {editMarks.hasOwnProperty(month[0] + currentDay)
+                      ? editMarks[month[0] + currentDay]
                       : ""}
                   </td>
                 );
