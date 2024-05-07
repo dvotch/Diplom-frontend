@@ -2,6 +2,7 @@ import { useQueryClient } from "@tanstack/react-query";
 import { useUploadLogo } from "./api/logo";
 import { Button } from "../../shared/components";
 import { AddOrganizationForm } from "../addOrganization/addOrganizationForm";
+import { AddFutureForm } from "../addFuture/ui";
 
 export const Settings = () => {
   const queryClient = useQueryClient();
@@ -24,6 +25,7 @@ export const Settings = () => {
         Добавить
       </Button>
       <AddOrganizationForm />
+      <AddFutureForm />
     </div>
   );
 };

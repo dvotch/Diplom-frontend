@@ -1,6 +1,6 @@
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Button } from "../../shared/components";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { usePostOrganization } from "./api/usePostOrganization";
 
 export type Inputs = {
@@ -14,15 +14,17 @@ export const AddOrganizationForm = () => {
   const { mutate: postOrganization } = usePostOrganization();
   const [fileName, setFileName] = useState("");
 
-  const inputFileText = document.querySelector("input[type=file]");
-  if (inputFileText instanceof HTMLInputElement)
-    inputFileText.addEventListener("change", () => {
-      if (inputFileText.files && inputFileText.files[0])
-        setFileName(inputFileText.files[0].name);
-    });
+  useEffect(() => {
+    const inputFileText = document.querySelector("#fileorg");
+    if (inputFileText instanceof HTMLInputElement)
+      inputFileText.addEventListener("change", () => {
+        if (inputFileText.files && inputFileText.files[0])
+          setFileName(inputFileText.files[0].name);
+      });
+  }, []);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    const inputFile: HTMLInputElement = document.querySelector("#file")!;
+    const inputFile: HTMLInputElement = document.querySelector("#fileorg")!;
     const file = inputFile.files;
     if (file) {
       data.logo = new Blob([file[0]], { type: "image/png" });
@@ -66,7 +68,7 @@ export const AddOrganizationForm = () => {
         </label>
       </section>
       <section>
-        <label className="input-file w-[400px]" htmlFor="file">
+        <label className="input-file w-[400px]">
           Загрузить фотографию:
           <br />
           <div className="mt-2 flex">
@@ -75,7 +77,12 @@ export const AddOrganizationForm = () => {
                 {fileName}
               </div>
             </span>
-            <input type="file" className="" id="file" {...register("logo")} />
+            <input
+              type="file"
+              className=""
+              id="fileorg"
+              {...register("logo")}
+            />
             <span className="input-file-btn">Выберите файл</span>
           </div>
         </label>

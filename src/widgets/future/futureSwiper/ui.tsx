@@ -9,13 +9,7 @@ export const FutureSwiper = ({ data }: { data: IWork[] }) => {
   const [showPhone, setShowPhone] = useState(false);
   return (
     <div className="w-[1224px] mt-8">
-      <Swiper
-        spaceBetween={50}
-        slidesPerView={2}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        className="w-full h-44"
-      >
+      <Swiper spaceBetween={50} slidesPerView={2} className="w-full h-44">
         {data.map((elem) => {
           return (
             <SwiperSlide>
