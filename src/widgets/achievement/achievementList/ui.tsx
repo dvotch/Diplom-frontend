@@ -41,7 +41,7 @@ export const AchievementList = () => {
 
   return (
     <>
-      <h2 className="text-3xl mt-8">Загруженные достижения</h2>
+      <h2 className="text-3xl mt-8 dark:text-white">Загруженные достижения</h2>
       {isLoading ? (
         <div className="h-80">Loading...</div>
       ) : (

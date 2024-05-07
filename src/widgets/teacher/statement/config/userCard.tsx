@@ -2,7 +2,7 @@ import axios from "axios";
 import { useUsersMarks } from "../api/marks";
 import { IUser } from "../interfaces";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { useState } from "react";
+
 import { useAverageMarks } from "../api/averageMark";
 
 export const UserCard = ({
@@ -48,6 +48,10 @@ export const UserCard = ({
     const currentDate = new Date();
     currentDate.setDate(day);
     currentDate.setMonth(+monthCompare);
+    currentDate.setMinutes(0);
+    currentDate.setSeconds(0);
+    currentDate.setHours(0);
+    currentDate.setMilliseconds(0);
     return axios.post(
       "http://prod.dvotch.ru:3001/api/mark",
       {
@@ -83,9 +87,9 @@ export const UserCard = ({
   });
 
   const handleCellClick = async (day: number) => {
+    const { data } = await getStatement(lesson, user.id);
+    const statementId = data[0];
     try {
-      const { data } = await getStatement(lesson, user.id);
-      const statementId = data[0];
       await mutate(day, statementId);
     } catch (error) {}
   };
