@@ -3,7 +3,6 @@ import { evenMonths, oddMonths } from "./months";
 
 export const Quarter = ({ odd, marks }: { odd: boolean; marks: IMark[] }) => {
   const months = odd ? Object.entries(oddMonths) : Object.entries(evenMonths);
-  console.log(months);
   const days: number[] = [];
 
   for (let i = 1; i <= 31; i++) days.push(i);
