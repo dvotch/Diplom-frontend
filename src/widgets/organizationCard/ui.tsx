@@ -26,9 +26,9 @@ export const OrganizationCard = memo(
           <img
             src={photo}
             alt="Лого организации"
-            className="row-span-3 self-center"
+            className="row-span-3 self-center dark:text-white"
           />
-          <h2 className="col-span-3 text-2xl">{name}</h2>
+          <h2 className="col-span-3 text-2xl dark:text-white">{name}</h2>
           <p className="col-span-3 text-xl text-gray-400 overflow-auto">
             {description}
           </p>

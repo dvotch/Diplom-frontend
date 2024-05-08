@@ -5,11 +5,13 @@ import RoomIcon from "@mui/icons-material/Room";
 import { Link, useNavigate } from "react-router-dom";
 import { Button } from "../../shared/components";
 import { QueryCache } from "@tanstack/react-query";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { RoleContext } from "../../app/context";
 
 export const Header = () => {
   const navigate = useNavigate();
   const cache = new QueryCache();
+  const { setTheme: setThemeContext } = useContext(RoleContext);
 
   const handleLogout = () => {
     localStorage.removeItem("token");
@@ -27,8 +29,10 @@ export const Header = () => {
   useEffect(() => {
     if (theme === "dark") {
       document.documentElement.classList.add("dark");
+      setThemeContext("dark");
     } else {
       document.documentElement.classList.remove("dark");
+      setThemeContext("");
     }
   }, [theme]);
 

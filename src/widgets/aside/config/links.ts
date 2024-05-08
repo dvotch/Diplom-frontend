@@ -17,7 +17,7 @@ export const LinksStudent: LinkData[] = [
   },
   {
     path: "/student/credit",
-    text: "Задолженности",
+    text: "Задолжности",
   },
   {
     path: "/student/future",
@@ -33,7 +33,7 @@ export const LinksTeacher: LinkData[] = [
   ...LinksGeneral,
   {
     path: "/teacher/credit",
-    text: "Задолженности",
+    text: "Задолжности",
   },
 ];
 

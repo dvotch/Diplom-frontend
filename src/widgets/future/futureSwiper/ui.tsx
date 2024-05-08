@@ -3,20 +3,24 @@ import { Pagination } from "swiper/modules";
 
 import { Button } from "../../../shared/components";
 import { IWork } from "../interfaces";
-import { CSSProperties, useState } from "react";
+import { CSSProperties, useContext, useState } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
+import { RoleContext } from "../../../app/context";
 
 export const FutureSwiper = ({ data }: { data: IWork[] }) => {
   const [showPhone, setShowPhone] = useState(false);
+  const { theme } = useContext(RoleContext);
+  const paginationColor = theme ? "rgb(225 29 72 )" : "rgb(147 51 234 )";
 
   return (
     <div className="w-[1224px] mt-8">
       <Swiper
         style={
           {
-            "--swiper-pagination-color": "rgb(147 51 234 )",
+            "--swiper-pagination-color": paginationColor,
+            "--swiper-pagination-bullet-inactive-color": paginationColor,
           } as CSSProperties
         }
         spaceBetween={50}
@@ -31,11 +35,13 @@ export const FutureSwiper = ({ data }: { data: IWork[] }) => {
         {data.map((elem) => {
           return (
             <SwiperSlide style={{ width: "680px" }} key={elem.id}>
-              <div className="flex justify-between flex-col h-3/4 border-l-4 border-l-purple-600 p-2">
-                <div className="text-2xl">
+              <div className="flex justify-between flex-col h-3/4 border-l-4 border-l-purple-600 p-2 dark:border-rose-600">
+                <div className="text-2xl dark:text-white">
                   <h2>{elem.name}</h2>
                   <h2>{"от" + elem.cost + "₽"}</h2>
-                  <p className="text-gray-400">{elem.place}</p>
+                  <p className="text-gray-400 dark:text-sub-100">
+                    {elem.place}
+                  </p>
                 </div>
                 <div className="flex justify-between text-base">
                   <Button variant="contained">

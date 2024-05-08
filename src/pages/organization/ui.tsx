@@ -39,8 +39,8 @@ export const OrganizationPage = () => {
   return (
     <div className="flex flex-col">
       <div className="flex justify-between ">
-        <h1 className=" text-5xl">Мое портфолио</h1>
-        <Button variant="contained" onClick={handleClickOpenModal}>
+        <h1 className=" text-5xl dark:text-white">Членство</h1>
+        <Button variant="outlined" onClick={handleClickOpenModal}>
           Оставить заявку
         </Button>
       </div>

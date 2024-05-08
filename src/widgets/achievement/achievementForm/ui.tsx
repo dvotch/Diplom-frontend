@@ -54,12 +54,12 @@ export const AchievementForm = () => {
           type="text"
           placeholder="Название"
           {...register("name")}
-          className="border-gray-200 border-2 rounded-lg px-4 py-2 mt-2 w-[600px]"
+          className="border-gray-200 border-2 rounded-lg px-4 py-2 mt-2 w-[600px] dark:border-rose-600"
         />
       </label>
       <label>
         Год:
-        <div className="select mt-2 ">
+        <div className="select mt-2 dark:before:border-rose-600 dark:after:border-rose-600 dark:border-rose-600">
           <select {...register("year")} className="indent-4" required>
             <option value="" hidden>
               Выберите из списка
@@ -74,7 +74,7 @@ export const AchievementForm = () => {
       </label>
       <label>
         Категория:
-        <div className="select mt-2">
+        <div className="select mt-2 dark:before:border-rose-600 dark:after:border-rose-600 dark:border-rose-600">
           <select
             {...register("categoryId")}
             className="indent-4"
@@ -96,14 +96,21 @@ export const AchievementForm = () => {
       <label className="input-file w-[400px]" htmlFor="file">
         Загрузить фотографию:
         <br />
-        <div className="mt-2 flex">
-          <span className="input-file-text flex-1 ">
-            <div className="w-[95%] text-nowrap overflow-hidden">
+        <div className="mt-2 flex ">
+          <span className="input-file-text flex-1 dark:border-rose-600 ">
+            <div className="w-[95%] text-nowrap overflow-hidden ">
               {fileName}
             </div>
           </span>
-          <input type="file" className="" id="file" {...register("photo")} />
-          <span className="input-file-btn dark:text-white">Выберите файл</span>
+          <input
+            type="file"
+            className="dark:border-rose-600"
+            id="file"
+            {...register("photo")}
+          />
+          <span className="input-file-btn dark:text-white dark:border-rose-600">
+            Выберите файл
+          </span>
         </div>
       </label>
       <Button className="w-fit" type="submit" variant="outlined">

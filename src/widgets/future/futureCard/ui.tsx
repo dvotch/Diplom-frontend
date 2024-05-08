@@ -8,7 +8,7 @@ export const FutureCard = ({ data }: { data: ILearn[] }) => {
         return (
           <div
             key={elem.id}
-            className="bg-white flex rounded-xl text-xl gap-4 p-4 border-2 shadow-lg"
+            className="bg-white flex rounded-xl text-xl gap-4 p-4 border-[1px] shadow-lg dark:bg-slate-900 dark:border-rose-600"
           >
             <div className="relative">
               <img src={elem.photo} alt="" width={200} />
@@ -17,7 +17,7 @@ export const FutureCard = ({ data }: { data: ILearn[] }) => {
               </p>
             </div>
 
-            <div className="flex flex-col gap-2">
+            <div className="flex flex-col gap-2 dark:text-white">
               <h2>{elem.place}</h2>
               <p className="font-medium w-5/6">{elem.name}</p>
               <p>{elem.description}</p>

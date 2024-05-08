@@ -54,12 +54,19 @@ export const AchievementList = () => {
                 src={achievement.photo}
                 alt="фотография достижения"
                 width={110}
+                className="text-white"
               />
               <div>
-                <h4 className="font-bold">{achievement.name}</h4>
-                <span className="text-gray-400">{achievement.year}</span>
+                <h4 className="font-bold dark:text-white">
+                  {achievement.name}
+                </h4>
+                <span className="text-gray-400 dark:text-sub-100">
+                  {achievement.year}
+                </span>
               </div>
-              <p className="text-gray-400">{achievement.categoryId}</p>
+              <p className="text-gray-400 dark:text-sub-100">
+                {achievement.categoryId}
+              </p>
               <div className="flex gap-6">
                 <Button variant="outlined">Скачать</Button>
                 <Button

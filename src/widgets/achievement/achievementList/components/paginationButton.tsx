@@ -26,7 +26,7 @@ export const Pagination = React.memo((props: PaginationProps) => {
   return (
     <div className="paginator">
       <button
-        className="arrow"
+        className="dark:text-white"
         type="button"
         onClick={handlePrevPageClick}
         disabled={disable.left}
@@ -34,12 +34,12 @@ export const Pagination = React.memo((props: PaginationProps) => {
         {"<"}
       </button>
       {nav && (
-        <span className="navigation">
+        <span className="dark:text-white">
           {nav.current + 1} / {nav.total}
         </span>
       )}
       <button
-        className="arrow"
+        className="dark:text-white"
         type="button"
         onClick={handleNextPageClick}
         disabled={disable.right}

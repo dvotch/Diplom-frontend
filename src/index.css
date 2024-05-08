@@ -60,6 +60,17 @@
     rotate: 45deg;
   }
 
+  .select::after,
+  .select::before {
+    content: "";
+    height: 16px;
+    border: 1.5px solid purple;
+    position: absolute;
+    top: 15px;
+    right: 30px;
+    rotate: 45deg;
+  }
+
   .select::before {
     rotate: 135deg;
     right: 40px;

@@ -29,8 +29,8 @@ export const OrganizationModal = ({ open, onClose }: props) => {
 
   return (
     <ReactPortal wrapperId="react-portal-modal-organization">
-      <div className="w-screen h-screen absolute bg-slate-200/70 top-0 left-0 grid place-items-center">
-        <div className="p-4 w-[480px] h-3/5 bg-white">
+      <div className="w-screen h-screen absolute bg-slate-200/70 top-0 left-0 grid place-items-center ">
+        <div className="p-4 w-[480px] h-[520px] bg-white dark:bg-slate-800 rounded-lg">
           <form
             method="dialog"
             onSubmit={handleSubmit(onSubmit)}
@@ -38,18 +38,18 @@ export const OrganizationModal = ({ open, onClose }: props) => {
           >
             <button
               onClick={onClose}
-              className="text-purple-600 place-self-end"
+              className="text-purple-600 place-self-end dark:text-white"
             >
               <DisabledByDefaultIcon sx={{ fontSize: 40 }} />
             </button>
 
-            <h2 className="text-purple-600 text-3xl font-bold place-self-center">
+            <h2 className="text-purple-600 text-3xl font-bold place-self-center dark:text-white">
               Подача заявки
             </h2>
-            <section className="mt-4 w-4/5">
+            <section className="mt-4 w-4/5 dark:text-white">
               <label>
                 Выберите организацию:
-                <div className="select mt-2 w-full ">
+                <div className="select mt-2 w-full dark:before:border-rose-600 dark:after:border-rose-600 dark:border-rose-600 ">
                   <select
                     {...register("organizationId")}
                     className="indent-4"
@@ -67,7 +67,7 @@ export const OrganizationModal = ({ open, onClose }: props) => {
                 </div>
               </label>
             </section>
-            <section className="w-4/5">
+            <section className="w-4/5 dark:text-white ">
               <label>
                 Почему именно вы должны стать участником:
                 <div className="mt-2">
@@ -75,7 +75,7 @@ export const OrganizationModal = ({ open, onClose }: props) => {
                     placeholder="Напишите почему ..."
                     {...register("whyYouText")}
                     required
-                    className="w-full border-2 border-gray-200 h-32 resize-none p-2"
+                    className="w-full border-2 border-gray-200 h-32 resize-none p-2 dark:border-rose-600"
                   />
                 </div>
               </label>

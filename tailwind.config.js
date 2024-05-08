@@ -2,6 +2,7 @@
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
   darkMode: "class",
+  mode: "jit",
   theme: {
     extend: {
       gridTemplateColumns: {
