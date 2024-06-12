@@ -24,7 +24,11 @@ export const Quarter = ({
   for (let i = 1; i <= 31; i++) days.push(i);
   const handelClick = (event: React.SyntheticEvent) => {
     const button = event.target;
-    if (button instanceof HTMLButtonElement) setMonthCompare(button.value);
+    if (button instanceof HTMLButtonElement) {
+      setMonthCompare(button.value);
+      document.querySelector("#month > .active")?.classList.remove("active");
+      button.classList.add("active");
+    }
   };
   return (
     <div className="">
@@ -40,7 +44,7 @@ export const Quarter = ({
               months.push(i);
             }
             return (
-              <div onClick={handelClick}>
+              <div onClick={handelClick} id="month">
                 {months.map((monthIndex, index) => (
                   <button className="ml-4" key={index} value={monthIndex}>
                     {allMonth[monthIndex]}
@@ -51,7 +55,7 @@ export const Quarter = ({
           }
         })}
         <div className=" ">
-          <div className="">
+          <div className="" id="mark">
             <button className="ml-2 " onClick={() => handleMarkSelection("0")}>
               Удалить
             </button>
