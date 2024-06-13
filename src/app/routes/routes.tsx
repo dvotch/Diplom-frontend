@@ -17,7 +17,6 @@ import { TeacherGuardRoute } from "./TeacherGuardRoute";
 import { OrganizationPage } from "../../pages/organization/ui";
 import { StudentCreditPage } from "../../pages/creditStudentPage/ui";
 import { FuturePage } from "../../pages/futurePage/ui";
-import { AdminGuardRoute } from "./AdminGuardRoute";
 
 export const route = createBrowserRouter(
   createRoutesFromElements(
