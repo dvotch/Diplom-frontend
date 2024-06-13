@@ -8,13 +8,17 @@ import { useState } from "react";
 import axios from "axios";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useUserGroup } from "../api/userGroup";
+import { useGroupTeacher } from "../api/group";
 
 export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
-  const { data: lessons } = useLessons();
+  
   const { data: credits } = useCredit();
+  
 
-  const { data: usersGroup } = useUserGroup(205);
-
+  const { data: group } = useGroupTeacher();
+  const [selectedGroup, setSelectedGroup] = useState(205);
+  const { data: lessons } = useLessons(selectedGroup );
+  const { data: usersGroup } = useUserGroup(selectedGroup);
   const [selectedLessonId, setSelectedLessonId] = useState("");
   const [selectedUserId, setSelectedUserId] = useState("");
   const [selectedDateStart, setSelectedDateStart] = useState("");
@@ -25,7 +29,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     const TOKEN = localStorage.getItem("token");
 
     return await axios.post("http://prod.dvotch.ru:3001/api/credit", data, {
-      //дата передача
+     
       headers: {
         Authorization: TOKEN,
       },
@@ -45,6 +49,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
       date: new Date(selectedDateStart),
       deadLine: new Date(selectedDateEnd),
       lessonId: selectedLessonId,
+   
       office: Number(selectedOffice),
       userId: selectedUserId,
     };
@@ -88,6 +93,27 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
               </div>
 
               <div>
+              <div>
+                  <div className="flex-col font-regular text-indigo-950">
+                    Выберите группу
+                  </div>
+                  <select
+                    className="w-56 border-solid mt-2 border-2 font-regular rounded-lg"
+                    name="group"
+                    value={selectedGroup}
+                    onChange={(e) => setSelectedGroup(e.target.value)}
+                  >
+                    <option value="" disabled>
+                      Номер
+                    </option>
+                    {group &&
+                      group.map((group) => (
+                        <option key={group.group} value={group.group}>
+                          {group}
+                        </option>
+                      ))}
+                  </select>
+                </div>
                 <div>
                   <div className="flex-col font-regular text-indigo-950">
                     Выберите предмет
