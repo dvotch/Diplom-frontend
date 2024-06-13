@@ -36,8 +36,10 @@ export const Statement = () => {
       <QuaterButtons onClick={changeQuater} />
       {isLoadingLessons ? (
         <div>Loading</div>
-      ) : (
+      ) : lessons?.length ? (
         <LessonButton lessons={lessons} onClick={changeLesson} />
+      ) : (
+        <div className="mt-8 text-xl">Не назначено</div>
       )}
 
       {lesson && marks && <Quarter odd={odd} marks={marks} />}

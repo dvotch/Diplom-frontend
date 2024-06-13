@@ -38,6 +38,7 @@ export const AchievementForm = () => {
       const userId = decodeJwt().id;
       postPortfolio({ userId, ...data });
       reset();
+      setFileName("");
     }
   };
 
@@ -55,6 +56,7 @@ export const AchievementForm = () => {
           placeholder="Название"
           {...register("name")}
           className="border-gray-200 border-2 rounded-lg px-4 py-2 mt-2 w-[600px] dark:border-rose-600"
+          required
         />
       </label>
       <label>
@@ -107,6 +109,7 @@ export const AchievementForm = () => {
             className="dark:border-rose-600"
             id="file"
             {...register("photo")}
+            required
           />
           <span className="input-file-btn dark:text-white dark:border-rose-600">
             Выберите файл

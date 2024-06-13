@@ -35,10 +35,7 @@ export const route = createBrowserRouter(
           <Route element={<Credit />} path="teacher/credit" />
           <Route element={<StatementTeacher />} path="teacher/statement" />
         </Route>
-        <Route element={<AdminGuardRoute />}>
-          <Route element={<Settings />} path="settings" />
-        </Route>
-
+        <Route element={<Settings />} path="settings" />
         <Route element={<PortfolioPage />} path="portfolio" />
       </Route>
       <Route element={<Forbidden />} path="forbidden" />
