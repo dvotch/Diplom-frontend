@@ -16,7 +16,7 @@ export const RootLayot = () => {
   }, []);
   return (
     <div className="h-screen">
-      <div className="grid grid-cols-root grid-rows-root gap-y-6 gap-x-12 dark:bg-slate-900 h-fit">
+      <div className="grid grid-cols-root grid-rows-root gap-y-6 gap-x-12 dark:bg-slate-900 h-screen">
         <Header />
         <Aside />
         <Outlet />

@@ -30,16 +30,20 @@ export const Aside = () => {
       )}
       {decode.group && <p className="mt-2">{decode.group + " группа"}</p>}
       <ul className="mt-6 w-60 ">
-        {linksMenu.map((link, index) => (
-          <li key={index}>
-            <BaseLink
-              to={link.path}
-              className={clsx(index === 0 ? "text-black" : "")}
-            >
-              {link.text}
-            </BaseLink>
-          </li>
-        ))}
+        {decode.roles[0] !== "RESOURCES_DEPARTMENT" ? (
+          linksMenu.map((link, index) => (
+            <li key={index}>
+              <BaseLink
+                to={link.path}
+                className={clsx(index === 0 ? "text-black" : "")}
+              >
+                {link.text}
+              </BaseLink>
+            </li>
+          ))
+        ) : (
+          <></>
+        )}
       </ul>
     </aside>
   );

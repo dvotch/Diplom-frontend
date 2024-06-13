@@ -24,6 +24,27 @@ export const AchievementList = () => {
   const getTotalPageCount = (rowCount: number): number =>
     Math.ceil(rowCount / ROWS_PER_PAGE);
 
+  function downloadBlob(blob: Blob, name: string) {
+    const anchor = document.createElement("a");
+    anchor.setAttribute("download", name || "");
+    const blobUrl = URL.createObjectURL(blob);
+    anchor.href = blobUrl;
+    anchor.click();
+    setTimeout(() => URL.revokeObjectURL(blobUrl), 3000);
+  }
+
+  const handleClickDownloadImage = async (
+    e: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    const image = e.currentTarget.value.replace("data:image/png;base64,", "");
+    console.log(image);
+    let contentType = "image/png";
+
+    const res = await fetch(`data:${contentType};base64,${image}`);
+    const data = await res.blob();
+    downloadBlob(data, "image");
+  };
+
   const handleNextPageClick = useCallback(() => {
     const current = page;
     const next = current + 1;
@@ -68,7 +89,13 @@ export const AchievementList = () => {
                 {achievement.categoryId}
               </p>
               <div className="flex gap-6">
-                <Button variant="outlined">Скачать</Button>
+                <Button
+                  variant="outlined"
+                  onClick={handleClickDownloadImage}
+                  value={achievement.photo}
+                >
+                  Скачать
+                </Button>
                 <Button
                   variant="outlined"
                   value={achievement.id}
