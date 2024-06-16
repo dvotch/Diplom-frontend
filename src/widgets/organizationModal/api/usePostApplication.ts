@@ -1,6 +1,6 @@
 import axios from "axios";
 import { STUDENT_ORGANIZATION_URL, TOKEN } from "../../../shared/const";
-import { useMutation } from "@tanstack/react-query";
+import { QueryClient, useMutation } from "@tanstack/react-query";
 
 interface IApplication {
   organizationId: string;
@@ -19,7 +19,23 @@ export const PostApplicationToOrganization = (data: IApplication) => {
   );
 };
 
-export const usePostApplication = () =>
+export const usePostApplication = (client: QueryClient) =>
   useMutation({
     mutationFn: (data: IApplication) => PostApplicationToOrganization(data),
+    onSuccess: () => {
+      client.invalidateQueries({ queryKey: ["all organizations"] });
+      client.invalidateQueries({ queryKey: ["organizations"] });
+    },
+    onSettled: () => {
+      client.invalidateQueries({ queryKey: ["all organizations"] });
+      client.invalidateQueries({ queryKey: ["organizations"] });
+    },
+    onMutate: () => {
+      client.invalidateQueries({ queryKey: ["all organizations"] });
+      client.invalidateQueries({ queryKey: ["organizations"] });
+    },
+    onError: () => {
+      client.invalidateQueries({ queryKey: ["all organizations"] });
+      client.invalidateQueries({ queryKey: ["organizations"] });
+    },
   });

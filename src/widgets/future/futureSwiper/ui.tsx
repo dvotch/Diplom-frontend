@@ -3,16 +3,20 @@ import { Pagination } from "swiper/modules";
 
 import { Button } from "../../../shared/components";
 import { IWork } from "../interfaces";
-import { CSSProperties, useContext, useState } from "react";
+import { CSSProperties, useContext } from "react";
 
 import "swiper/css";
 import "swiper/css/pagination";
 import { RoleContext } from "../../../app/context";
 
 export const FutureSwiper = ({ data }: { data: IWork[] }) => {
-  const [showPhone, setShowPhone] = useState(false);
   const { theme } = useContext(RoleContext);
   const paginationColor = theme ? "rgb(225 29 72 )" : "rgb(147 51 234 )";
+
+  const handleClickShowPhone = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.currentTarget.children[0].classList.toggle("hidden");
+    event.currentTarget.children[1].classList.toggle("hidden");
+  };
 
   return (
     <div className="w-[1224px] mt-8">
@@ -52,9 +56,11 @@ export const FutureSwiper = ({ data }: { data: IWork[] }) => {
 
                   <Button
                     variant="outlined"
-                    onClick={() => setShowPhone(!showPhone)}
+                    onClick={handleClickShowPhone}
+                    className="w-72"
                   >
-                    {showPhone ? elem.phone : "Показать контакты"}
+                    <p>Показать контакты</p>
+                    <p className="hidden">{elem.phone}</p>
                   </Button>
                 </div>
               </div>

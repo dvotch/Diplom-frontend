@@ -13,7 +13,8 @@ interface props {
 export const OrganizationCard = memo(
   ({ name, description, photo, id }: props) => {
     const queryClient = new QueryClient();
-    const { mutate: leaveFromOrganization } = useLeaveFromOrganization();
+    const { mutate: leaveFromOrganization } =
+      useLeaveFromOrganization(queryClient);
 
     const handleClickLeave = () => {
       leaveFromOrganization(id);

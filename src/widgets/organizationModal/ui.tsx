@@ -4,6 +4,7 @@ import { Button } from "../../shared/components";
 import DisabledByDefaultIcon from "@mui/icons-material/DisabledByDefault";
 import ReactPortal from "../../shared/components/portals/portal";
 import { usePostApplication } from "./api/usePostApplication";
+import { QueryClient } from "@tanstack/react-query";
 
 export type Inputs = {
   organizationId: string;
@@ -16,12 +17,17 @@ interface props {
 }
 
 export const OrganizationModal = ({ open, onClose }: props) => {
+  const client = new QueryClient();
   const { register, handleSubmit, reset } = useForm<Inputs>();
   const { data: organizations } = useGetOrganizations();
-  const { mutate: postApplication } = usePostApplication();
+  const { mutate: postApplication } = usePostApplication(client);
 
   const onSubmit: SubmitHandler<Inputs> = (data) => {
     postApplication(data);
+    document
+      .querySelector("#react-portal-modal-organization")
+      ?.classList.add("hidden");
+    document.body.classList.remove("overflow-hidden");
     reset();
   };
 

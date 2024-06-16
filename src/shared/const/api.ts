@@ -9,6 +9,7 @@ export const STUDENT_URL = BASE_URL + "/student";
 export const STUDENT_STATEMENT_URL = STUDENT_URL + "/statement";
 export const STUDENT_PORTFOLIO_URL = STUDENT_URL + "/portfolio";
 export const STUDENT_ORGANIZATION_URL = STUDENT_URL + "/organization";
+export const STUDENT_ORGANIZATIONS_URL = STUDENT_URL + "/organizations";
 export const STUDENT_CREDIT_URL = STUDENT_URL + "/credits";
 export const STUDENT_TEACHER_URL = STUDENT_URL + "/user";
 export const STUDENT_LESSON_URL = STUDENT_URL + "/lesson";
