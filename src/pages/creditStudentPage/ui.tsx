@@ -6,7 +6,7 @@ export const StudentCreditPage = () => {
   console.log(credits);
   return (
     <div className="">
-      <h1 className="text-4xl dark:text-white mb-4">Задолжности</h1>
+      <h1 className="text-4xl dark:text-white mb-4">Задолженности</h1>
       <div className="flex-col flex justify-center">
         <table className=" ">
           <thead className="">

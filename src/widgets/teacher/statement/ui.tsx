@@ -5,7 +5,7 @@ import { LessonButton } from "./components";
 import { GroupButtons } from "./components/GroupButtons";
 
 export const StatementTeacher = () => {
-  const [group, setGroup] = useState();
+  const [group, setGroup] = useState(205);
   const [currentLesson, setCurrentLesson] = useState("");
   const { data: lessons } = useLessons(group || 205);
 

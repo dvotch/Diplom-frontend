@@ -11,13 +11,11 @@ import { useUserGroup } from "../api/userGroup";
 import { useGroupTeacher } from "../api/group";
 
 export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
-  
   const { data: credits } = useCredit();
-  
 
   const { data: group } = useGroupTeacher();
   const [selectedGroup, setSelectedGroup] = useState(205);
-  const { data: lessons } = useLessons(selectedGroup );
+  const { data: lessons } = useLessons(selectedGroup);
   const { data: usersGroup } = useUserGroup(selectedGroup);
   const [selectedLessonId, setSelectedLessonId] = useState("");
   const [selectedUserId, setSelectedUserId] = useState("");
@@ -29,7 +27,6 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
     const TOKEN = localStorage.getItem("token");
 
     return await axios.post("http://prod.dvotch.ru:3001/api/credit", data, {
-     
       headers: {
         Authorization: TOKEN,
       },
@@ -49,7 +46,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
       date: new Date(selectedDateStart),
       deadLine: new Date(selectedDateEnd),
       lessonId: selectedLessonId,
-   
+
       office: Number(selectedOffice),
       userId: selectedUserId,
     };
@@ -93,7 +90,7 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
               </div>
 
               <div>
-              <div>
+                <div>
                   <div className="flex-col font-regular text-indigo-950">
                     Выберите группу
                   </div>
@@ -101,14 +98,14 @@ export const AddRecordModal = ({ isOpen, onClose }: AddRecordModalProps) => {
                     className="w-56 border-solid mt-2 border-2 font-regular rounded-lg"
                     name="group"
                     value={selectedGroup}
-                    onChange={(e) => setSelectedGroup(e.target.value)}
+                    onChange={(e) => setSelectedGroup(+e.target.value)}
                   >
                     <option value="" disabled>
                       Номер
                     </option>
                     {group &&
                       group.map((group) => (
-                        <option key={group.group} value={group.group}>
+                        <option key={group} value={group}>
                           {group}
                         </option>
                       ))}

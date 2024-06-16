@@ -9,7 +9,7 @@ export interface IPostFuture {
   cost: number;
   description: string | null;
   phone: string | null;
-  photo: Blob | FileList | null;
+  logo: Blob | FileList | null;
   place: string;
   specializationId: string;
   url: string;
