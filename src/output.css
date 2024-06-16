@@ -828,10 +828,6 @@ dialog[open] {
   grid-row-start: 3;
 }
 
-.row-start-4 {
-  grid-row-start: 4;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -973,10 +969,6 @@ dialog[open] {
   height: 100vh;
 }
 
-.h-full {
-  height: 100%;
-}
-
 .w-1\/5 {
   width: 20%;
 }
@@ -1076,6 +1068,10 @@ dialog[open] {
 
 .w-screen {
   width: 100vw;
+}
+
+.w-28 {
+  width: 7rem;
 }
 
 .flex-1 {

@@ -86,7 +86,7 @@ export const Quarter = ({
       <table className="table-fixed border-2 border-black row-start-3 h-1/2  dark:border-white w-full">
         <thead>
           <tr>
-            <th className="w-20"></th>
+            <th className="w-28"></th>
             {days.map((value) => {
               return (
                 <th className="border-[1px] border-red-500  w-6" key={value}>

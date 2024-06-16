@@ -95,7 +95,7 @@ export const UserCard = ({
   };
   return (
     <tr className="border-[1px] border-red-500 text-center">
-      <td>{user.name + " " + user.surname}</td>
+      <td className="w-28">{user.name + " " + user.surname}</td>
 
       {days.map((day) => {
         const currentDate = new Date();
