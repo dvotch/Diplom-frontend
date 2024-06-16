@@ -13,12 +13,12 @@ export type Inputs = {
   specializationId: string;
   url: string;
   work: boolean;
-  logo: FileList | Blob | null;
+  photo: FileList | Blob | null;
 };
 
 export const AddFutureForm = () => {
   const { register, handleSubmit, control, reset } = useForm<Inputs>({
-    defaultValues: { description: null, phone: null, logo: null },
+    defaultValues: { description: null, phone: null, photo: null },
   });
   const { data: specializations } = useGetSpecializations();
   const { mutate: postFuture } = usePostFuture();
@@ -43,10 +43,8 @@ export const AddFutureForm = () => {
     data.cost = +data.cost;
     const inputFile = document.querySelector("#filefuture");
     if (inputFile instanceof HTMLInputElement) {
-      const file = inputFile.files;
-      if (file) {
-        data.logo = new Blob([file[0]], { type: "image/png" });
-      } else data.logo = new Blob();
+      const file = inputFile.files || "";
+      data.photo = new Blob([file[0]], { type: "image/png" });
     }
     postFuture(data);
     reset();
@@ -170,7 +168,7 @@ export const AddFutureForm = () => {
                 type="file"
                 className=""
                 id="filefuture"
-                {...register("logo")}
+                {...register("photo")}
               />
               <span className="input-file-btn">Выберите файл</span>
             </div>

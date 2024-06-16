@@ -6,7 +6,7 @@ export default {
   theme: {
     extend: {
       gridTemplateColumns: {
-        root: "320px 1fr",
+        root: "320px 1fr 160px",
         statement: "200px 1fr",
         achievementList: "160px 240px 1fr 320px",
         organizationCard: "160px 150px 1fr 120px",

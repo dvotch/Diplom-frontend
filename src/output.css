@@ -828,6 +828,10 @@ dialog[open] {
   grid-row-start: 3;
 }
 
+.row-start-4 {
+  grid-row-start: 4;
+}
+
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -960,8 +964,21 @@ dialog[open] {
   height: fit-content;
 }
 
+.h-max {
+  height: -moz-max-content;
+  height: max-content;
+}
+
 .h-screen {
   height: 100vh;
+}
+
+.h-full {
+  height: 100%;
+}
+
+.w-1\/5 {
+  width: 20%;
 }
 
 .w-10 {
@@ -1086,7 +1103,7 @@ dialog[open] {
 }
 
 .grid-cols-root {
-  grid-template-columns: 320px 1fr;
+  grid-template-columns: 320px 1fr 160px;
 }
 
 .grid-cols-statement {
