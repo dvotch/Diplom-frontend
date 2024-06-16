@@ -42,7 +42,7 @@ export const FutureSwiper = ({ data }: { data: IWork[] }) => {
               <div className="flex justify-between flex-col h-3/4 border-l-4 border-l-purple-600 p-2 dark:border-rose-600">
                 <div className="text-2xl dark:text-white">
                   <h2>{elem.name}</h2>
-                  <h2>{"от" + elem.cost + "₽"}</h2>
+                  <h2>{"от " + elem.cost + "₽"}</h2>
                   <p className="text-gray-400 dark:text-sub-100">
                     {elem.place}
                   </p>
